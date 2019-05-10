@@ -1,0 +1,444 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  
+    <title>Javascript创建对象方式总结 | PHP101</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="tudouya">
+    
+    <meta name="description" content="概述在JavaScript中， 对象向我们提供了一种存储，操作，并在网络中传输数据的方式。同时，把对象当成键值对的集合，给我们带来了一种最常用的创建JavaScript对象的方法。
+使用对象字面值(object literal)创建对象在JavaScript中，这是创建对象最简单的方式。语法如下:
+">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="tudouyavip">
+    <meta name="twitter:title" content="Javascript创建对象方式总结 | PHP101">
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="PHP101" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//cdn.bootcss.com/highlight.js/9.1.0/styles/railscasts.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+      figure {
+        overflow-x: auto;
+      }
+    </style>
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+	<div id="textlogo">
+		<h1 class="site-name"><a href="/" title="PHP101">PHP101</a></h1>
+		<h2 class="blog-motto">~if you fail to plan，you plan to fail~</h2>
+	</div>
+	<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+	</a></div>
+	<nav class="animated">
+		<ul>
+			<ul>
+			 	
+					<li><a href="/">主页</a></li>
+				
+					<li><a href="/archives">归档</a></li>
+				
+					<li><a href="/about">关于我</a></li>
+				
+					<li><a href="/sitemap.xml">站点地图</a></li>
+				
+				<li><a href="javascript:void(0)" id="local-search-btn">搜索</a></li>
+		</ul>
+	</ul></nav>
+</div>
+
+<div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+<div class="popoverlay"></div>
+    </header>
+    <div id="wrap">
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+    <time datetime="2019-02-25T02:38:23.000Z" itemprop="datePublished">
+      <a href="/2019/02/25/summary-of-javascript-object-creation-ways.html" title="Javascript创建对象方式总结" itemprop="url" class="article-time">2019-02-25</a>
+    </time>
+
+  <h1 itemprop="name" class="article-name">
+    
+      <a href="/2019/02/25/summary-of-javascript-object-creation-ways.html" title="Javascript创建对象方式总结" itemprop="url"><span>Javascript创建对象方式总结</span></a>
+  </h1>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用对象字面值-object-literal-创建对象"><span class="toc-number">2.</span> <span class="toc-text">使用对象字面值(object literal)创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用new关键字创建对象"><span class="toc-number">3.</span> <span class="toc-text">使用new关键字创建对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用内建的Object构造器函数"><span class="toc-number">3.1.</span> <span class="toc-text">使用内建的Object构造器函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用用户定义的构造器函数"><span class="toc-number">3.2.</span> <span class="toc-text">使用用户定义的构造器函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型-Prototype-方法创建对象"><span class="toc-number">4.</span> <span class="toc-text">原型(Prototype)方法创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型和函数结合创建对象"><span class="toc-number">5.</span> <span class="toc-text">原型和函数结合创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Object-create-方法创建对象"><span class="toc-number">6.</span> <span class="toc-text">使用Object.create()方法创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Object-assign-方法创建对象"><span class="toc-number">7.</span> <span class="toc-text">使用Object.assign()方法创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#singleton-单例-方法创建对象"><span class="toc-number">8.</span> <span class="toc-text">singleton(单例)方法创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用ES6-class创建对象"><span class="toc-number">9.</span> <span class="toc-text">使用ES6 class创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">10.</span> <span class="toc-text">参考</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在JavaScript中， 对象向我们提供了一种存储，操作，并在网络中传输数据的方式。同时，把对象当成键值对的集合，给我们带来了一种最常用的创建JavaScript对象的方法。</p>
+<h2 id="使用对象字面值-object-literal-创建对象"><a href="#使用对象字面值-object-literal-创建对象" class="headerlink" title="使用对象字面值(object literal)创建对象"></a>使用对象字面值(object literal)创建对象</h2><p>在JavaScript中，这是创建对象最简单的方式。语法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    firstName: &apos;san&apos;,</span><br><span class="line">    lastName: &apos;zhang&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用new关键字创建对象"><a href="#使用new关键字创建对象" class="headerlink" title="使用new关键字创建对象"></a>使用new关键字创建对象</h2><p>这种创建对象的方式，类似于在其他面向对象的语言中创建对象，如Java。顺便说一下，从ES6开始，类在JavaScript中是原生存在的，可以通过定义类来创建对象。使用<code>new</code>关键字创建对象，需要一个<code>构造器函数</code>。</p>
+<p>使用<code>new</code>关键字创建对象，有如下两种形式:</p>
+<h3 id="使用内建的Object构造器函数"><a href="#使用内建的Object构造器函数" class="headerlink" title="使用内建的Object构造器函数"></a>使用内建的Object构造器函数</h3><p>创建对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var person = new Object()</span><br></pre></td></tr></table></figure>
+<p>向对象添加属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.firtName = &apos;san&apos;</span><br><span class="line">person.lastName = &apos;zhang&apos;</span><br></pre></td></tr></table></figure>
+<p>不推荐使用这种方式创建对象，因为会涉及到<code>作用域解析</code>，JavaScript会去检测构造器函数是用户创建的还是系统内建的。</p>
+<h3 id="使用用户定义的构造器函数"><a href="#使用用户定义的构造器函数" class="headerlink" title="使用用户定义的构造器函数"></a>使用用户定义的构造器函数</h3><p>使用<code>Object()</code>构造器函数创建对象的问题是每次创建完对象，都需要手工去为对象添加属性。<br>为了避免每次都需要手工为对象添加属性，我们可以创建一个自定义函数。首先，我们创建一个构造器函数，然后使用<code>new</code>关键字创建对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(firstName, lastName) &#123;</span><br><span class="line">  this.firstName = firstName</span><br><span class="line">  this.lastName = lastName</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;san&quot;, &quot;zhang&quot;)</span><br><span class="line">var person1 = new Person(&quot;si&quot;, &quot;li&quot;)</span><br></pre></td></tr></table></figure>
+<p>在这种创建对象的方式中，new关键字执行了以下步骤:</p>
+<ol>
+<li>调用函数</li>
+<li>修改<code>this</code>关键字指向，将该函数的<code>this</code>指向一个新对象</li>
+<li>将新对象的原型(prototype)绑定到函数的原型</li>
+</ol>
+<p>代码说明如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// new关键字</span><br><span class="line">function Person(name) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;tudouya&quot;)</span><br><span class="line"></span><br><span class="line">// 等价代码</span><br><span class="line">var person1 = Object.create(Person.prototype)</span><br></pre></td></tr></table></figure>
+<h2 id="原型-Prototype-方法创建对象"><a href="#原型-Prototype-方法创建对象" class="headerlink" title="原型(Prototype)方法创建对象"></a>原型(Prototype)方法创建对象</h2><p>使用原型方法创建对象，代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = &quot;tudouya&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="原型和函数结合创建对象"><a href="#原型和函数结合创建对象" class="headerlink" title="原型和函数结合创建对象"></a>原型和函数结合创建对象</h2><p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name)&#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125; </span><br><span class="line">Person.prototype.getName = function()&#123;</span><br><span class="line">  return this.name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用Object-create-方法创建对象"><a href="#使用Object-create-方法创建对象" class="headerlink" title="使用Object.create()方法创建对象"></a>使用Object.create()方法创建对象</h2><p>使用这种方式创建对象，可以很方便的从一个已经存在的对象创建一个新对象，而不用使用<code>new</code>关键字。</p>
+<blockquote>
+<p>Object.create()方法基于一个已经存在的对象作为新创建对象的原型。</p>
+</blockquote>
+<p>使用<code>Object.create()</code>方法创建对象，只需要记住它需要传入两个参数。第一个参数可以是任意一个对象，该对象作为新创建对象的原型。第二个参数是可选参数，类型是对象，该对象包含向新创建对象添加的属性。</p>
+<p>假设有一个班级对象<code>Class</code>:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var classObj = &#123; className: &quot;一班&quot;, studentNum: 100 &#125;</span><br></pre></td></tr></table></figure>
+<p>现在想为这个班级创建一个学生，可以使用如下方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var studentObj = Object.create(classObj, &#123;</span><br><span class="line">  studentName: &#123;</span><br><span class="line">    value: &quot;小明&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  studentAge: &#123;</span><br><span class="line">    value: 29</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意第二个参数的写法</p>
+</blockquote>
+<h2 id="使用Object-assign-方法创建对象"><a href="#使用Object-assign-方法创建对象" class="headerlink" title="使用Object.assign()方法创建对象"></a>使用Object.assign()方法创建对象</h2><p>假如我们想创建一个拥有一个以上对象的所有属性的新对象，<code>Object.assign()</code>方法可以实现这种目的。</p>
+<blockquote>
+<p>Object.assign()方法用来将一个或多个源对象的所有可枚举的属性拷贝到一个目标对象中。</p>
+</blockquote>
+<p><code>Object.assign()</code>可以接受任意数量的对象作为参数。第一个参数是他即将创建，并且返回的参数。其余传入的对象参数，被用来将属性复制到新对象中。</p>
+<p>假设有如下两个对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var orgObj = &#123; company: &quot;Baidu&quot; &#125;</span><br><span class="line">var carObj = &#123; carName: &quot;Kayan&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>现在需要一个在<code>Baidu</code>公司开着<code>Kayan</code>的员工，可以使用如下方式创建对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var employee = Object.assign(&#123;&#125;, carObj, orgObj)</span><br></pre></td></tr></table></figure>
+<h2 id="singleton-单例-方法创建对象"><a href="#singleton-单例-方法创建对象" class="headerlink" title="singleton(单例)方法创建对象"></a>singleton(单例)方法创建对象</h2><p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var person = new function()&#123;</span><br><span class="line">  this.name = &quot;tudouya&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用ES6-class创建对象"><a href="#使用ES6-class创建对象" class="headerlink" title="使用ES6 class创建对象"></a>使用ES6 class创建对象</h2><p>使用ES6 class创建对象与使用用户定义的函数构造器创建对象方法类似。构造器函数被类替代，因为它遵循ES6规范。</p>
+<p>示例如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  constructor(firstName, lastName) &#123;</span><br><span class="line">    this.firstName = firstName</span><br><span class="line">    this.lastName = lastName</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;san&quot;, &quot;zhang&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://coderwall.com/p/p5cf5w/different-ways-of-creating-an-object-in-javascript" target="_blank" rel="noopener">Different ways of creating an Object in javascript</a></li>
+<li><a href="https://stackoverflow.com/questions/6843951/which-way-is-best-for-creating-an-object-in-javascript-is-var-necessary-befor" target="_blank" rel="noopener">Which way is best for creating an object in JavaScript? Is <code>var</code> necessary before an object property?</a></li>
+<li><a href="https://medium.freecodecamp.org/a-complete-guide-to-creating-objects-in-javascript-b0e2450655e8" target="_blank" rel="noopener">How to create objects in JavaScript</a></li>
+</ul>
+<p><br></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+</div>
+
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.php101.cn/2019/02/25/summary-of-javascript-object-creation-ways.html" data-title="Javascript创建对象方式总结 | PHP101" data-tsina class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="/2019/03/24/es6-actual-combat.html" title="ES6实战">
+  <strong>上一篇：</strong><br>
+  <span>
+  ES6实战</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://program-think.blogspot.com/" target="_blank" title="编程随想">编程随想</a></li>
+      <li><a href="http://yanhaijing.com/" target="_blank" title="颜海镜">颜海镜</a></li>
+      <li><a href="http://dog.wtf/">雪泥鸿爪</a></li>
+      <li><a href="http://homeway.me/" target="_blank" title="夏日小草">夏日小草</a></li><br>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+<div>
+<br>
+<a href="http://www.php-fig.org/psr/" target="_blank">
+    <img style="width:100%;height:auto;" src="http://italoqueiroz.github.io/images/php-fig/phpfig.png" alt="PHP: PHP-FIG">
+</a></div>
+<a href="http://www.phptherightway.com" target="_blank">
+    <img style="width:100%;height:auto;" src="http://www.phptherightway.com/images/banners/vert-rect-240x400.png" alt="PHP: The Right Way">
+</a>
+</div>
+
+    </div>
+</div>
+    <footer><div id="footer">
+	
+    <div class="social-font">
+        
+        <a href="http://weibo.com/5050395856" target="_blank" class="icon-weibo" title="weibo"></a>
+        
+        
+        <a href="https://github.com/tudouya" target="_blank" class="icon-github" title="github"></a>
+        
+        
+        
+        <a href="https://twitter.com/tudouyavip" target="_blank" class="icon-twitter" title="twitter"></a>
+        
+        
+        
+        
+        <a href="mailto:chenfwvip@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+        
+    </div>
+	<section class="info">
+		<p class="l1">
+            Success in this matter, is our boss!
+        </p>
+            <!-- <br/> -->
+        <p class="l2">
+			Action is the only road to knowledge
+        </p>
+	</section>
+	 
+		<p class="copyright">Powered by <a href="https://hexo.io/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/RagingCat/hexo-theme-ragingcat" target="_blank" title="hexo-theme-ragingcat">Raging Cat</a> © 2019
+		
+		<a href="http://www.php101.cn/about" target="_blank" title="tudouya">tudouya</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+
+    $('.navbar').click(function(){
+      $('header nav').toggleClass('shownav');
+    });
+    var myWidth = 0;
+    function getSize(){
+      if( typeof( window.innerWidth ) == 'number' ) {
+        myWidth = window.innerWidth;
+      } else if( document.documentElement && document.documentElement.clientWidth) {
+        myWidth = document.documentElement.clientWidth;
+      };
+    };
+    var m = $('#main'),
+        a = $('#asidepart'),
+        c = $('.closeaside'),
+        o = $('.openaside');
+    $(window).resize(function(){
+      getSize();
+      if (myWidth >= 1024) {
+        $('header nav').removeClass('shownav');
+      }else
+      {
+        m.removeClass('moveMain');
+        a.css('display', 'block').removeClass('fadeOut');
+        o.css('display', 'none');
+        
+      }
+    });
+    c.click(function(){
+      a.addClass('fadeOut').css('display', 'none');
+      o.css('display', 'block').addClass('fadeIn');
+      m.addClass('moveMain');
+    });
+    o.click(function(){
+      o.css('display', 'none').removeClass('beforeFadeIn');
+      a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');
+      m.removeClass('moveMain');
+    });
+    $(window).scroll(function(){
+      o.css("top",Math.max(80,260-$(this).scrollTop()));
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var ai = $(".article-content>iframe"),
+      ae = $(".article-content>embed"),
+      t = $("#toc"),
+      h = $("article h2")
+    ;(ah = $("article h2")),
+      (ta = $("#toc.toc-aside")),
+      (o = $(".openaside")),
+      (c = $(".closeaside"))
+    if (ai.length > 0) {
+      ai.wrap('<div class="video-container" />')
+    }
+    if (ae.length > 0) {
+      ae.wrap('<div class="video-container" />')
+    }
+    if (ah.length == 0) {
+      t.css("display", "none")
+    } else {
+      c.click(function() {
+        ta.css("display", "block").addClass("fadeIn")
+      })
+      o.click(function() {
+        ta.css("display", "none")
+      })
+      $(window).scroll(function() {
+        ta.css("top", Math.max(140, 320 - $(this).scrollTop()))
+      })
+    }
+  })
+</script>
+ 
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $this = $(".share"),
+      url = $this.attr("data-url"),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr("data-title"),
+      tsina = $this.attr("data-tsina")
+    var html = [
+      '<a href="#" class="overlay" id="qrcode"></a>',
+      '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' +
+        encodedUrl +
+        '"/></div>',
+      '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+      '<a href="https://www.facebook.com/sharer.php?u=' +
+        encodedUrl +
+        '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+      '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+      '<a href="https://twitter.com/intent/tweet?url=' +
+        encodedUrl +
+        '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+      '<a href="http://service.weibo.com/share/share.php?title=' +
+        title +
+        "&url=" +
+        encodedUrl +
+        "&ralateUid=" +
+        tsina +
+        "&searchPic=true&style=number" +
+        '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+      '<span title="Share to"></span>'
+    ].join("")
+    $this.append(html)
+    $(".article-share-qrcode").click(function() {
+      var imgSrc = $("#qrcode-pic").attr("data-src")
+      $("#qrcode-pic").attr("src", imgSrc)
+      $("#qrcode-pic").load(function() {
+        $(".qrcode strong").text(" ")
+      })
+    })
+  })
+</script>
+   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<style type="text/css"></style>
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("pre").each(function(i, block) {
+      hljs.highlightBlock(block)
+    })
+    $(".article-content").each(function(i) {
+      $(this)
+        .find("img")
+        .each(function() {
+          if (
+            $(this)
+              .parent()
+              .hasClass("fancybox")
+          )
+            return
+          var alt = this.alt
+          if (alt) $(this).after('<span class="caption">' + alt + "</span>")
+          $(this).wrap(
+            '<a href="' +
+              this.src +
+              '" title="' +
+              alt +
+              '" class="fancybox"></a>'
+          )
+        })
+      $(this)
+        .find(".fancybox")
+        .each(function() {
+          $(this).attr("rel", "article" + i)
+        })
+    })
+    if ($.fancybox) {
+      $(".fancybox").fancybox()
+    }
+  })
+</script>
+   
+
+  </body>
+</html>
