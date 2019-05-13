@@ -1,0 +1,431 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  
+    <title>Python类方法装饰器 | PHP101</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="tudouya">
+    
+    <meta name="description" content="概述在Python中，装饰器是随处可见的，并且装饰器也是很有用的一种语法糖。
+本篇文章主要介绍Python类中常见的几个内建装饰器。
+@property装饰器在面向对象中，为类的属性创建getters和setters通常被认为是最佳实践。许多语言允许通过不同的方法实现getters和setters，">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="tudouyavip">
+    <meta name="twitter:title" content="Python类方法装饰器 | PHP101">
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="PHP101" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//cdn.bootcss.com/highlight.js/9.1.0/styles/railscasts.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+      figure {
+        overflow-x: auto;
+      }
+    </style>
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+	<div id="textlogo">
+		<h1 class="site-name"><a href="/" title="PHP101">PHP101</a></h1>
+		<h2 class="blog-motto">~if you fail to plan，you plan to fail~</h2>
+	</div>
+	<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+	</a></div>
+	<nav class="animated">
+		<ul>
+			<ul>
+			 	
+					<li><a href="/">主页</a></li>
+				
+					<li><a href="/archives">归档</a></li>
+				
+					<li><a href="/about">关于我</a></li>
+				
+					<li><a href="/sitemap.xml">站点地图</a></li>
+				
+				<li><a href="javascript:void(0)" id="local-search-btn">搜索</a></li>
+		</ul>
+	</ul></nav>
+</div>
+
+<div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+<div class="popoverlay"></div>
+    </header>
+    <div id="wrap">
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+    <time datetime="2019-05-13T02:24:25.000Z" itemprop="datePublished">
+      <a href="/2019/05/13/python-class-method-decorator.html" title="Python类方法装饰器" itemprop="url" class="article-time">2019-05-13</a>
+    </time>
+
+  <h1 itemprop="name" class="article-name">
+    
+      <a href="/2019/05/13/python-class-method-decorator.html" title="Python类方法装饰器" itemprop="url"><span>Python类方法装饰器</span></a>
+  </h1>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#property装饰器"><span class="toc-number">2.</span> <span class="toc-text">@property装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#property-函数"><span class="toc-number">2.1.</span> <span class="toc-text">property()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property装饰器-1"><span class="toc-number">2.2.</span> <span class="toc-text">@property装饰器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#classmethod装饰器"><span class="toc-number">3.</span> <span class="toc-text">@classmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#staticmethod装饰器"><span class="toc-number">4.</span> <span class="toc-text">@staticmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Python中，装饰器是随处可见的，并且装饰器也是很有用的一种语法糖。</p>
+<p>本篇文章主要介绍Python类中常见的几个内建装饰器。</p>
+<h2 id="property装饰器"><a href="#property装饰器" class="headerlink" title="@property装饰器"></a>@property装饰器</h2><p>在面向对象中，为类的属性创建<code>getters</code>和<code>setters</code>通常被认为是最佳实践。许多语言允许通过不同的方法实现<code>getters</code>和<code>setters</code>，或许是通过使用函数，或许是通过语言特有的<code>get</code>和<code>set</code>构造函数。</p>
+<p>在Python中，通过使用<code>@property</code>装饰器来实现<code>getters</code>和<code>setters</code>。</p>
+<h3 id="property-函数"><a href="#property-函数" class="headerlink" title="property()函数"></a>property()函数</h3><p>除了<code>@property</code>装饰器，<code>property()</code>函数也可以在Python中是<code>getters</code>和<code>setters</code>。</p>
+<p>下面定义了一个包含<code>getter</code>和<code>setter</code>方法的类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Persone:</span><br><span class="line">    def __init__(self, name=&apos;Jim Green&apos;):</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line">    def getname(self):</span><br><span class="line">        return self.__name</span><br><span class="line"></span><br><span class="line">    def setname(self, name):</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person = Persone()</span><br><span class="line">print(person.getname())</span><br><span class="line"></span><br><span class="line">person.setname(&apos;David&apos;)</span><br><span class="line">print(person.getname())</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"></span><br><span class="line">Jim Green</span><br><span class="line">David</span><br></pre></td></tr></table></figure>
+<p>从输出可以看出，<code>getname()</code>方法返回了<code>__name</code>属性的值，<code>setname()</code>方法设置了<code>__name</code>属性的值。但是，如果在修改和获取<code>__name</code>属性的时候，能隐式的调用<code>setter</code>和<code>getter</code>方法，就会方便很多。在Python中，提供了<code>propterty()</code>函数达到这种目的。</p>
+<p>Python中<code>property()</code>方法提供了一个访问实例属性的接口，<code>property()</code>方法将<code>get</code>, ‘set’, <code>delete</code>方法作为参数，返回一个<code>属性</code>(property)类的对象。</p>
+<p>下面为类增加一个<code>property()</code>方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Persone:</span><br><span class="line">    def __init__(self, name=&apos;Jim Green&apos;):</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line">    def getname(self):</span><br><span class="line">        print(&apos;getname()...called&apos;)</span><br><span class="line">        return self.__name</span><br><span class="line"></span><br><span class="line">    def setname(self, name):</span><br><span class="line">        print(&apos;setname()...called&apos;)</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line">    name = property(getname, setname)</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，<code>property(getname, setname)</code>返回了一个属性对象，并赋值给了<code>name</code>。<code>name</code>属性隐藏了对象的私有属性<code>__name</code>。<code>name</code>属性可以被直接访问，但是隐式调用了<code>setname()</code>和<code>getname()</code>方法。</p>
+<p>除了<code>getter</code>和<code>setter</code>，还可以为属性设置个<code>del</code>方法，代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Person:</span><br><span class="line">    def __init__(self, name=&apos;Jim Green&apos;):</span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">    def getname(self):</span><br><span class="line">        print(&apos;getname()...called&apos;)</span><br><span class="line">        return self._name</span><br><span class="line"></span><br><span class="line">    def setname(self, name):</span><br><span class="line">        print(&apos;setname()...called&apos;)</span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">    def delname(self):</span><br><span class="line">        print(&apos;delname()...called&apos;)</span><br><span class="line">        del self._name</span><br><span class="line"></span><br><span class="line">    name = property(getname, setname, delname)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person = Person(&apos;Hi&apos;)</span><br><span class="line">print(person.name)</span><br><span class="line"></span><br><span class="line">person.name = &apos;David&apos;</span><br><span class="line">print(person.name)</span><br><span class="line"></span><br><span class="line">del person.name</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"></span><br><span class="line">getname()...called</span><br><span class="line">Hi</span><br><span class="line">setname()...called</span><br><span class="line">getname()...called</span><br><span class="line">David</span><br><span class="line">delname()...called</span><br></pre></td></tr></table></figure>
+<h3 id="property装饰器-1"><a href="#property装饰器-1" class="headerlink" title="@property装饰器"></a>@property装饰器</h3><p>相比<code>property()</code>函数，<code>@property</code>装饰器提供了一种简单的方法来定义<code>getter</code>和<code>setter</code>。</p>
+<p><code>@property</code>装饰器是Python内建的装饰器。</p>
+<p>下面的代码使用了<code>@property</code>装饰器为类定义了<code>getter</code>和<code>setter</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Person:</span><br><span class="line">    def __init__(self, name=&quot;Jim&quot;):</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def name(self):</span><br><span class="line">        print(&apos;call name with property()&apos;)</span><br><span class="line">        return self.__name + &apos;Hi&apos;</span><br><span class="line"></span><br><span class="line">    @name.setter</span><br><span class="line">    def name(self, name):</span><br><span class="line">        print(&apos;call setter&apos;)</span><br><span class="line">        self.__name = name</span><br><span class="line"></span><br><span class="line">    @name.deleter</span><br><span class="line">    def name(self):</span><br><span class="line">        print(&apos;call deleter&apos;)</span><br><span class="line">        del self.__name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person = Person(&apos;Davi&apos;)</span><br><span class="line">print(person.name)</span><br><span class="line"></span><br><span class="line">person.name = &apos;Jim&apos;</span><br><span class="line">print(person.name)</span><br><span class="line"></span><br><span class="line">del person.name</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">call name with property()</span><br><span class="line">Davi Hi</span><br><span class="line">call setter</span><br><span class="line">call name with property()</span><br><span class="line">Jim Hi</span><br><span class="line">call deleter</span><br></pre></td></tr></table></figure>
+<p>使用<code>property()</code>或者<code>@property</code>为类设置属性的好处有以下几点:</p>
+<ul>
+<li>校验: 在设置类内部属性之前，可以对传入的值进行校验，只有当满足条件后，才能设置属性，如果不满足条件，则抛出错误。</li>
+<li>懒加载: 资源可以被延迟加载，只有当真正使用的时候才被加载，可以节省时间和资源。</li>
+<li>抽象: getter和setter可以对类内部数据的真正表示进行抽象，如上面的例子，调用<code>name</code>返回的其实是拼接出来的数据，并不是<code>__name</code>属性真正的值。</li>
+</ul>
+<h2 id="classmethod装饰器"><a href="#classmethod装饰器" class="headerlink" title="@classmethod装饰器"></a>@classmethod装饰器</h2><p><code>@classmethod</code>装饰器可以被用在任何一个类方法上，它允许我们使用类名直接调用方法，而不用先创建一个对象。</p>
+<blockquote>
+<p>被<code>@classmethod</code>装饰器装饰的方法，第一参数不是<code>self</code>, 而是<code>cls</code>, 代表类本身。</p>
+</blockquote>
+<p><code>@classmethod</code>装饰器使用方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Person:</span><br><span class="line">    total = 0</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        Person.total = Person.total + 1</span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def showTotal(cls):</span><br><span class="line">        print(f&apos;Total: &#123;cls.total&#125;&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person1 = Person()</span><br><span class="line">Person.showTotal()</span><br><span class="line"></span><br><span class="line">person2 = Person()</span><br><span class="line">Person.showTotal()</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"></span><br><span class="line">Total: 1</span><br><span class="line">Total: 2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>被<code>@classmethod</code>装饰器装饰的方法，除了可以通过类名直接调用，也可以通过对象调用。</p>
+</blockquote>
+<h2 id="staticmethod装饰器"><a href="#staticmethod装饰器" class="headerlink" title="@staticmethod装饰器"></a>@staticmethod装饰器</h2><p><code>@staticmethod</code>同样是Python内建的装饰器，该装饰器在Python类中用来定义静态方法。</p>
+<p>静态方法在被类实例或者类自身调用时，不接受任何参数。</p>
+<p><code>@staticmethod</code>使用方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class person:</span><br><span class="line">    @staticmethod</span><br><span class="line">    def greet():</span><br><span class="line">        print(&quot;Hello!&quot;)</span><br></pre></td></tr></table></figure>
+<p>同样的，静态方法同时支持被类名和类实例调用。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://stackabuse.com/the-python-property-decorator/" target="_blank" rel="noopener">The Python Property Decorator</a></li>
+<li><a href="https://www.machinelearningplus.com/python/python-property/" target="_blank" rel="noopener">Python @Property Explained – How to Use and When? (Full Examples)</a></li>
+<li><a href="https://realpython.com/instance-class-and-static-methods-demystified/#instance-methods" target="_blank" rel="noopener">Python’s Instance, Class, and Static Methods Demystified</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.php101.cn/2019/05/13/python-class-method-decorator.html" data-title="Python类方法装饰器 | PHP101" data-tsina class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/05/10/python-object-oriented-summary.html" title="Python面向对象总结">
+ <strong>下一篇：</strong><br> 
+ <span>Python面向对象总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://program-think.blogspot.com/" target="_blank" title="编程随想">编程随想</a></li>
+      <li><a href="http://yanhaijing.com/" target="_blank" title="颜海镜">颜海镜</a></li>
+      <li><a href="http://dog.wtf/">雪泥鸿爪</a></li>
+      <li><a href="http://homeway.me/" target="_blank" title="夏日小草">夏日小草</a></li><br>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+<div>
+<br>
+<a href="http://www.php-fig.org/psr/" target="_blank">
+    <img style="width:100%;height:auto;" src="http://italoqueiroz.github.io/images/php-fig/phpfig.png" alt="PHP: PHP-FIG">
+</a></div>
+<a href="http://www.phptherightway.com" target="_blank">
+    <img style="width:100%;height:auto;" src="http://www.phptherightway.com/images/banners/vert-rect-240x400.png" alt="PHP: The Right Way">
+</a>
+</div>
+
+    </div>
+</div>
+    <footer><div id="footer">
+	
+    <div class="social-font">
+        
+        <a href="http://weibo.com/5050395856" target="_blank" class="icon-weibo" title="weibo"></a>
+        
+        
+        <a href="https://github.com/tudouya" target="_blank" class="icon-github" title="github"></a>
+        
+        
+        
+        <a href="https://twitter.com/tudouyavip" target="_blank" class="icon-twitter" title="twitter"></a>
+        
+        
+        
+        
+        <a href="mailto:chenfwvip@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+        
+    </div>
+	<section class="info">
+		<p class="l1">
+            Success in this matter, is our boss!
+        </p>
+            <!-- <br/> -->
+        <p class="l2">
+			Action is the only road to knowledge
+        </p>
+	</section>
+	 
+		<p class="copyright">Powered by <a href="https://hexo.io/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/RagingCat/hexo-theme-ragingcat" target="_blank" title="hexo-theme-ragingcat">Raging Cat</a> © 2019
+		
+		<a href="http://www.php101.cn/about" target="_blank" title="tudouya">tudouya</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+
+    $('.navbar').click(function(){
+      $('header nav').toggleClass('shownav');
+    });
+    var myWidth = 0;
+    function getSize(){
+      if( typeof( window.innerWidth ) == 'number' ) {
+        myWidth = window.innerWidth;
+      } else if( document.documentElement && document.documentElement.clientWidth) {
+        myWidth = document.documentElement.clientWidth;
+      };
+    };
+    var m = $('#main'),
+        a = $('#asidepart'),
+        c = $('.closeaside'),
+        o = $('.openaside');
+    $(window).resize(function(){
+      getSize();
+      if (myWidth >= 1024) {
+        $('header nav').removeClass('shownav');
+      }else
+      {
+        m.removeClass('moveMain');
+        a.css('display', 'block').removeClass('fadeOut');
+        o.css('display', 'none');
+        
+      }
+    });
+    c.click(function(){
+      a.addClass('fadeOut').css('display', 'none');
+      o.css('display', 'block').addClass('fadeIn');
+      m.addClass('moveMain');
+    });
+    o.click(function(){
+      o.css('display', 'none').removeClass('beforeFadeIn');
+      a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');
+      m.removeClass('moveMain');
+    });
+    $(window).scroll(function(){
+      o.css("top",Math.max(80,260-$(this).scrollTop()));
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var ai = $(".article-content>iframe"),
+      ae = $(".article-content>embed"),
+      t = $("#toc"),
+      h = $("article h2")
+    ;(ah = $("article h2")),
+      (ta = $("#toc.toc-aside")),
+      (o = $(".openaside")),
+      (c = $(".closeaside"))
+    if (ai.length > 0) {
+      ai.wrap('<div class="video-container" />')
+    }
+    if (ae.length > 0) {
+      ae.wrap('<div class="video-container" />')
+    }
+    if (ah.length == 0) {
+      t.css("display", "none")
+    } else {
+      c.click(function() {
+        ta.css("display", "block").addClass("fadeIn")
+      })
+      o.click(function() {
+        ta.css("display", "none")
+      })
+      $(window).scroll(function() {
+        ta.css("top", Math.max(140, 320 - $(this).scrollTop()))
+      })
+    }
+  })
+</script>
+ 
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $this = $(".share"),
+      url = $this.attr("data-url"),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr("data-title"),
+      tsina = $this.attr("data-tsina")
+    var html = [
+      '<a href="#" class="overlay" id="qrcode"></a>',
+      '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' +
+        encodedUrl +
+        '"/></div>',
+      '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+      '<a href="https://www.facebook.com/sharer.php?u=' +
+        encodedUrl +
+        '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+      '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+      '<a href="https://twitter.com/intent/tweet?url=' +
+        encodedUrl +
+        '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+      '<a href="http://service.weibo.com/share/share.php?title=' +
+        title +
+        "&url=" +
+        encodedUrl +
+        "&ralateUid=" +
+        tsina +
+        "&searchPic=true&style=number" +
+        '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+      '<span title="Share to"></span>'
+    ].join("")
+    $this.append(html)
+    $(".article-share-qrcode").click(function() {
+      var imgSrc = $("#qrcode-pic").attr("data-src")
+      $("#qrcode-pic").attr("src", imgSrc)
+      $("#qrcode-pic").load(function() {
+        $(".qrcode strong").text(" ")
+      })
+    })
+  })
+</script>
+   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<style type="text/css"></style>
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("pre").each(function(i, block) {
+      hljs.highlightBlock(block)
+    })
+    $(".article-content").each(function(i) {
+      $(this)
+        .find("img")
+        .each(function() {
+          if (
+            $(this)
+              .parent()
+              .hasClass("fancybox")
+          )
+            return
+          var alt = this.alt
+          if (alt) $(this).after('<span class="caption">' + alt + "</span>")
+          $(this).wrap(
+            '<a href="' +
+              this.src +
+              '" title="' +
+              alt +
+              '" class="fancybox"></a>'
+          )
+        })
+      $(this)
+        .find(".fancybox")
+        .each(function() {
+          $(this).attr("rel", "article" + i)
+        })
+    })
+    if ($.fancybox) {
+      $(".fancybox").fancybox()
+    }
+  })
+</script>
+   
+
+  </body>
+</html>

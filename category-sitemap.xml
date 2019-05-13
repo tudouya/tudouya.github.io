@@ -7,15 +7,15 @@
     </url>
 
     <url>
-        <loc>http://www.php101.cn/categories/python/</loc>
-        <lastmod>2019-05-10T10:30:19.000Z</lastmod>
+        <loc>http://www.php101.cn/categories/javascript/</loc>
+        <lastmod>2019-05-10T10:31:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.php101.cn/categories/javascript/</loc>
-        <lastmod>2019-05-10T10:31:12.000Z</lastmod>
+        <loc>http://www.php101.cn/categories/python/</loc>
+        <lastmod>2019-05-13T07:40:53.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
