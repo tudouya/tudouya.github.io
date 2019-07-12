@@ -78,12 +78,12 @@
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
     <time datetime="2019-05-13T02:24:25.000Z" itemprop="datePublished">
-      <a href="/2019/05/13/python-class-method-decorator.html" title="Python类方法装饰器" itemprop="url" class="article-time">2019-05-13</a>
+      <a href="/2019/05/13/python-lei-fang-fa-zhuang-shi-qi.html" title="Python类方法装饰器" itemprop="url" class="article-time">2019-05-13</a>
     </time>
 
   <h1 itemprop="name" class="article-name">
     
-      <a href="/2019/05/13/python-class-method-decorator.html" title="Python类方法装饰器" itemprop="url"><span>Python类方法装饰器</span></a>
+      <a href="/2019/05/13/python-lei-fang-fa-zhuang-shi-qi.html" title="Python类方法装饰器" itemprop="url"><span>Python类方法装饰器</span></a>
   </h1>
 </header>
 
@@ -93,7 +93,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#property装饰器"><span class="toc-number">2.</span> <span class="toc-text">@property装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#property-函数"><span class="toc-number">2.1.</span> <span class="toc-text">property()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property装饰器-1"><span class="toc-number">2.2.</span> <span class="toc-text">@property装饰器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#classmethod装饰器"><span class="toc-number">3.</span> <span class="toc-text">@classmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#staticmethod装饰器"><span class="toc-number">4.</span> <span class="toc-text">@staticmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#property装饰器"><span class="toc-number">2.</span> <span class="toc-text">@property装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#property-函数"><span class="toc-number">2.1.</span> <span class="toc-text">property()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property装饰器-1"><span class="toc-number">2.2.</span> <span class="toc-text">@property装饰器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#classmethod装饰器"><span class="toc-number">3.</span> <span class="toc-text">@classmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#staticmethod装饰器"><span class="toc-number">4.</span> <span class="toc-text">@staticmethod装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#classmethod-vs-staticmethod"><span class="toc-number">5.</span> <span class="toc-text">@classmethod vs @staticmethod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
@@ -135,10 +135,17 @@
 <p><code>@staticmethod</code>使用方法如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class person:</span><br><span class="line">    @staticmethod</span><br><span class="line">    def greet():</span><br><span class="line">        print(&quot;Hello!&quot;)</span><br></pre></td></tr></table></figure>
 <p>同样的，静态方法同时支持被类名和类实例调用。</p>
+<h2 id="classmethod-vs-staticmethod"><a href="#classmethod-vs-staticmethod" class="headerlink" title="@classmethod vs @staticmethod"></a>@classmethod vs @staticmethod</h2><ul>
+<li>classmethod将<code>cls</code>作为第一个参数，而staticmethod不需要</li>
+<li>classmethod可以访问和修改类状态，staticmethod不能</li>
+<li>通常会使用classmethod创建工厂方法。工厂方法会返回类对象。</li>
+<li>通常会使用staticmethod创建工具函数。</li>
+</ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://stackabuse.com/the-python-property-decorator/" target="_blank" rel="noopener">The Python Property Decorator</a></li>
 <li><a href="https://www.machinelearningplus.com/python/python-property/" target="_blank" rel="noopener">Python @Property Explained – How to Use and When? (Full Examples)</a></li>
 <li><a href="https://realpython.com/instance-class-and-static-methods-demystified/#instance-methods" target="_blank" rel="noopener">Python’s Instance, Class, and Static Methods Demystified</a></li>
+<li><a href="https://stackoverflow.com/questions/136097/what-is-the-difference-between-staticmethod-and-classmethod" target="_blank" rel="noopener">What is the difference between @staticmethod and @classmethod?</a></li>
 </ul>
   
 	</div>
@@ -155,7 +162,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://www.php101.cn/2019/05/13/python-class-method-decorator.html" data-title="Python类方法装饰器 | PHP101" data-tsina class="share clearfix">
+  <div data-url="http://www.php101.cn/2019/05/13/python-lei-fang-fa-zhuang-shi-qi.html" data-title="Python类方法装饰器 | PHP101" data-tsina class="share clearfix">
   </div>
 
 </div>
@@ -166,7 +173,7 @@
  
 
 <div class="next">
-<a href="/2019/05/10/python-object-oriented-summary.html" title="Python面向对象总结">
+<a href="/2019/05/10/python-mian-xiang-dui-xiang-zong-jie.html" title="Python面向对象总结">
  <strong>下一篇：</strong><br> 
  <span>Python面向对象总结
 </span>
