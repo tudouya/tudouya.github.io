@@ -4,6 +4,9 @@
     <title><![CDATA[开源镜像汇总]]></title>
     <url>%2F2019%2F07%2F12%2Fkai-yuan-jing-xiang-hui-zong.html</url>
     <content type="text"><![CDATA[概述汇总国内常见开源镜像，提高开发效率。 composer镜像 提供商 地址 阿里云 https://developer.aliyun.com/composer]]></content>
+      <categories>
+        <category>网络资源</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Python类方法装饰器]]></title>
