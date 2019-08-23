@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.php101.cn/"/>
-  <updated>2019-07-12T07:46:08.000Z</updated>
+  <updated>2019-08-23T07:20:33.000Z</updated>
   <id>http://www.php101.cn/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>漏洞及渗透练习平台汇总</title>
+    <link href="http://www.php101.cn/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html"/>
+    <id>http://www.php101.cn/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html</id>
+    <published>2019-08-23T06:46:24.000Z</published>
+    <updated>2019-08-23T07:20:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。</p><h2 id="漏洞环境-靶机"><a href="#漏洞环境-靶机" class="headerlink" title="漏洞环境(靶机)"></a>漏洞环境(靶机)</h2><h3 id="hackthebox（HTB）"><a href="#hackthebox（HTB）" class="headerlink" title="hackthebox（HTB）"></a>hackthebox（HTB）</h3><p>项目地址: <a href="https://www.hackthebox.eu/" target="_blank" rel="noopener">https://www.hackthebox.eu/</a></p><h3 id="WebGoat"><a href="#WebGoat" class="headerlink" title="WebGoat"></a>WebGoat</h3><p>项目地址: <a href="https://webgoat.github.io/WebGoat/" target="_blank" rel="noopener">https://webgoat.github.io/WebGoat/</a></p><h3 id="WebGoat-Legacy"><a href="#WebGoat-Legacy" class="headerlink" title="WebGoat-Legacy"></a>WebGoat-Legacy</h3><p>项目地址: <a href="https://github.com/WebGoat/WebGoat-Legacy" target="_blank" rel="noopener">https://github.com/WebGoat/WebGoat-Legacy</a></p><h3 id="DVWA"><a href="#DVWA" class="headerlink" title="DVWA"></a>DVWA</h3><p>项目地址: <a href="https://github.com/RandomStorm/DVWA" target="_blank" rel="noopener">https://github.com/RandomStorm/DVWA</a></p><h3 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h3><p>项目地址: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a></p><h3 id="vulnhub"><a href="#vulnhub" class="headerlink" title="vulnhub"></a>vulnhub</h3><p>项目地址: <a href="https://www.vulnhub.com/" target="_blank" rel="noopener">https://www.vulnhub.com/</a></p><h3 id="pentesterlab"><a href="#pentesterlab" class="headerlink" title="pentesterlab"></a>pentesterlab</h3><p>项目地址: <a href="https://pentesterlab.com/" target="_blank" rel="noopener">https://pentesterlab.com/</a></p><h3 id="vulnerable-node"><a href="#vulnerable-node" class="headerlink" title="vulnerable-node"></a>vulnerable-node</h3><p>项目地址: <a href="https://github.com/cr0hn/vulnerable-node" target="_blank" rel="noopener">https://github.com/cr0hn/vulnerable-node</a></p><h3 id="ZVulDrill（china）"><a href="#ZVulDrill（china）" class="headerlink" title="ZVulDrill（china）"></a>ZVulDrill（china）</h3><p>项目地址: <a href="https://github.com/710leo/ZVulDrill" target="_blank" rel="noopener">https://github.com/710leo/ZVulDrill</a></p><h3 id="VulApps（china）"><a href="#VulApps（china）" class="headerlink" title="VulApps（china）"></a>VulApps（china）</h3><p>项目地址: <a href="https://github.com/Medicean/VulApps" target="_blank" rel="noopener">https://github.com/Medicean/VulApps</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所
+      
+    
+    </summary>
+    
+      <category term="Web安全" scheme="http://www.php101.cn/categories/Web%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Docker基础</title>
+    <link href="http://www.php101.cn/2019/07/12/docker-ji-chu.html"/>
+    <id>http://www.php101.cn/2019/07/12/docker-ji-chu.html</id>
+    <published>2019-07-12T12:44:53.000Z</published>
+    <updated>2019-07-12T12:45:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;
+      
+    
+    </summary>
+    
+      <category term="DevOps" scheme="http://www.php101.cn/categories/DevOps/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>开源镜像汇总</title>

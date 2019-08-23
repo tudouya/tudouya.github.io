@@ -4,19 +4,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
   
-    <title>ES6实战 | PHP101</title>
+    <title>漏洞及渗透练习平台汇总 | PHP101</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tudouya">
     
-    <meta name="description" content="概述ES6风风风火火的出来很长时间了，从最初的babel插件支持，到vue或者react框架，再到浏览器原生支持。ES6中定义了很多方便实用的特性，但是一直没怎么深入了解，从今天起开始陆续深入平时写代码的过程中，遇到的ES6各种特性。
-扩展运算符(spread operator)…使用扩展运算符可以">
+    <meta name="description" content="概述很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。
+漏洞环境(靶机)hackthebox（HTB）项目地址: htt">
     
     
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="tudouyavip">
-    <meta name="twitter:title" content="ES6实战 | PHP101">
+    <meta name="twitter:title" content="漏洞及渗透练习平台汇总 | PHP101">
       
     
     
@@ -76,13 +76,13 @@
       <div id="main" class="post" itemscope itemprop="blogPost">
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
-    <time datetime="2019-03-24T04:13:32.000Z" itemprop="datePublished">
-      <a href="/2019/03/24/es6-shi-zhan.html" title="ES6实战" itemprop="url" class="article-time">2019-03-24</a>
+    <time datetime="2019-08-23T06:46:24.000Z" itemprop="datePublished">
+      <a href="/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" title="漏洞及渗透练习平台汇总" itemprop="url" class="article-time">2019-08-23</a>
     </time>
 
   <h1 itemprop="name" class="article-name">
     
-      <a href="/2019/03/24/es6-shi-zhan.html" title="ES6实战" itemprop="url"><span>ES6实战</span></a>
+      <a href="/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" title="漏洞及渗透练习平台汇总" itemprop="url"><span>漏洞及渗透练习平台汇总</span></a>
   </h1>
 </header>
 
@@ -92,26 +92,28 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展运算符-spread-operator-…"><span class="toc-number">2.</span> <span class="toc-text">扩展运算符(spread operator)…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新数组"><span class="toc-number">2.1.</span> <span class="toc-text">创建新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并数组"><span class="toc-number">2.2.</span> <span class="toc-text">合并数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新数组-1"><span class="toc-number">2.3.</span> <span class="toc-text">创建新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新对象"><span class="toc-number">2.4.</span> <span class="toc-text">创建新对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#展开字符串"><span class="toc-number">2.5.</span> <span class="toc-text">展开字符串</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞环境-靶机"><span class="toc-number">2.</span> <span class="toc-text">漏洞环境(靶机)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hackthebox（HTB）"><span class="toc-number">2.1.</span> <span class="toc-text">hackthebox（HTB）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebGoat"><span class="toc-number">2.2.</span> <span class="toc-text">WebGoat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebGoat-Legacy"><span class="toc-number">2.3.</span> <span class="toc-text">WebGoat-Legacy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DVWA"><span class="toc-number">2.4.</span> <span class="toc-text">DVWA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqli-labs"><span class="toc-number">2.5.</span> <span class="toc-text">sqli-labs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vulnhub"><span class="toc-number">2.6.</span> <span class="toc-text">vulnhub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pentesterlab"><span class="toc-number">2.7.</span> <span class="toc-text">pentesterlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vulnerable-node"><span class="toc-number">2.8.</span> <span class="toc-text">vulnerable-node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZVulDrill（china）"><span class="toc-number">2.9.</span> <span class="toc-text">ZVulDrill（china）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VulApps（china）"><span class="toc-number">2.10.</span> <span class="toc-text">VulApps（china）</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>ES6风风风火火的出来很长时间了，从最初的babel插件支持，到vue或者react框架，再到浏览器原生支持。ES6中定义了很多方便实用的特性，但是一直没怎么深入了解，从今天起开始陆续深入平时写代码的过程中，遇到的ES6各种特性。</p>
-<h2 id="扩展运算符-spread-operator-…"><a href="#扩展运算符-spread-operator-…" class="headerlink" title="扩展运算符(spread operator)…"></a>扩展运算符(spread operator)…</h2><p>使用扩展运算符可以展开数组，对象和字符串。</p>
-<blockquote>
-<p>扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
-</blockquote>
-<h3 id="创建新数组"><a href="#创建新数组" class="headerlink" title="创建新数组"></a>创建新数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = [1, 2, 3]</span><br><span class="line">const b = [...a, 4, 5, 6] // Array(6) [ 1, 2, 3, 4, 5, 6 ]</span><br></pre></td></tr></table></figure>
-<h3 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// ES5中concat()方法</span><br><span class="line">const arr1 = [&quot;a&quot;, &quot;b&quot;]</span><br><span class="line">const arr2 = [&quot;c&quot;]</span><br><span class="line">const arr3 = [&quot;d&quot;, &quot;e&quot;]</span><br><span class="line">const arrAll = arr1.concat(arr2, arr3) // Array(5) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span><br><span class="line"></span><br><span class="line">// 扩展云算法</span><br><span class="line">const arrAll = [...arr1, ...arr2, ...arr3] // Array(5) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span><br></pre></td></tr></table></figure>
-<h3 id="创建新数组-1"><a href="#创建新数组-1" class="headerlink" title="创建新数组"></a>创建新数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [&quot;a&quot;, &quot;b&quot;]</span><br><span class="line">const arr2 = [&quot;c&quot;]</span><br><span class="line">const arr3 = [&quot;d&quot;, &quot;e&quot;]</span><br><span class="line">const arr4 = [...arr1, ...arr2, ...arr3, &quot;f&quot;, &quot;g&quot;] // Array(7) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot; ]</span><br></pre></td></tr></table></figure>
-<h3 id="创建新对象"><a href="#创建新对象" class="headerlink" title="创建新对象"></a>创建新对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const oldPerson = &#123;</span><br><span class="line">  user: &quot;tudouya&quot;,</span><br><span class="line">  password: &quot;123456&quot;</span><br><span class="line">&#125;</span><br><span class="line">const newPerson = &#123; ...oldPerson &#125; // Object &#123; user: &quot;tudouya&quot;, password: &quot;123456&quot; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="展开字符串"><a href="#展开字符串" class="headerlink" title="展开字符串"></a>展开字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str = &quot;hello&quot;</span><br><span class="line">const arr = [...str] // Array(5) [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</span><br></pre></td></tr></table></figure>  
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。</p>
+<h2 id="漏洞环境-靶机"><a href="#漏洞环境-靶机" class="headerlink" title="漏洞环境(靶机)"></a>漏洞环境(靶机)</h2><h3 id="hackthebox（HTB）"><a href="#hackthebox（HTB）" class="headerlink" title="hackthebox（HTB）"></a>hackthebox（HTB）</h3><p>项目地址: <a href="https://www.hackthebox.eu/" target="_blank" rel="noopener">https://www.hackthebox.eu/</a></p>
+<h3 id="WebGoat"><a href="#WebGoat" class="headerlink" title="WebGoat"></a>WebGoat</h3><p>项目地址: <a href="https://webgoat.github.io/WebGoat/" target="_blank" rel="noopener">https://webgoat.github.io/WebGoat/</a></p>
+<h3 id="WebGoat-Legacy"><a href="#WebGoat-Legacy" class="headerlink" title="WebGoat-Legacy"></a>WebGoat-Legacy</h3><p>项目地址: <a href="https://github.com/WebGoat/WebGoat-Legacy" target="_blank" rel="noopener">https://github.com/WebGoat/WebGoat-Legacy</a></p>
+<h3 id="DVWA"><a href="#DVWA" class="headerlink" title="DVWA"></a>DVWA</h3><p>项目地址: <a href="https://github.com/RandomStorm/DVWA" target="_blank" rel="noopener">https://github.com/RandomStorm/DVWA</a></p>
+<h3 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h3><p>项目地址: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a></p>
+<h3 id="vulnhub"><a href="#vulnhub" class="headerlink" title="vulnhub"></a>vulnhub</h3><p>项目地址: <a href="https://www.vulnhub.com/" target="_blank" rel="noopener">https://www.vulnhub.com/</a></p>
+<h3 id="pentesterlab"><a href="#pentesterlab" class="headerlink" title="pentesterlab"></a>pentesterlab</h3><p>项目地址: <a href="https://pentesterlab.com/" target="_blank" rel="noopener">https://pentesterlab.com/</a></p>
+<h3 id="vulnerable-node"><a href="#vulnerable-node" class="headerlink" title="vulnerable-node"></a>vulnerable-node</h3><p>项目地址: <a href="https://github.com/cr0hn/vulnerable-node" target="_blank" rel="noopener">https://github.com/cr0hn/vulnerable-node</a></p>
+<h3 id="ZVulDrill（china）"><a href="#ZVulDrill（china）" class="headerlink" title="ZVulDrill（china）"></a>ZVulDrill（china）</h3><p>项目地址: <a href="https://github.com/710leo/ZVulDrill" target="_blank" rel="noopener">https://github.com/710leo/ZVulDrill</a></p>
+<h3 id="VulApps（china）"><a href="#VulApps（china）" class="headerlink" title="VulApps（china）"></a>VulApps（china）</h3><p>项目地址: <a href="https://github.com/Medicean/VulApps" target="_blank" rel="noopener">https://github.com/Medicean/VulApps</a></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  <a class="article-category-link" href="/categories/Web安全/">Web安全</a>
 </div>
 
 
@@ -120,7 +122,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://www.php101.cn/2019/03/24/es6-shi-zhan.html" data-title="ES6实战 | PHP101" data-tsina class="share clearfix">
+  <div data-url="http://www.php101.cn/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" data-title="漏洞及渗透练习平台汇总 | PHP101" data-tsina class="share clearfix">
   </div>
 
 </div>
@@ -129,19 +131,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2019/05/10/python-mian-xiang-dui-xiang-zong-jie.html" title="Python面向对象总结">
-  <strong>上一篇：</strong><br>
-  <span>
-  Python面向对象总结</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2019/02/25/javascript-chuang-jian-dui-xiang-fang-shi-zong-jie.html" title="Javascript创建对象方式总结">
+<a href="/2019/07/12/docker-ji-chu.html" title="Docker基础">
  <strong>下一篇：</strong><br> 
- <span>Javascript创建对象方式总结
+ <span>Docker基础
 </span>
 </a>
 </div>

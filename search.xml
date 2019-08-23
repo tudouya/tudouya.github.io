@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[漏洞及渗透练习平台汇总]]></title>
+    <url>%2F2019%2F08%2F23%2Flou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html</url>
+    <content type="text"><![CDATA[概述很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。 漏洞环境(靶机)hackthebox（HTB）项目地址: https://www.hackthebox.eu/ WebGoat项目地址: https://webgoat.github.io/WebGoat/ WebGoat-Legacy项目地址: https://github.com/WebGoat/WebGoat-Legacy DVWA项目地址: https://github.com/RandomStorm/DVWA sqli-labs项目地址: https://github.com/Audi-1/sqli-labs vulnhub项目地址: https://www.vulnhub.com/ pentesterlab项目地址: https://pentesterlab.com/ vulnerable-node项目地址: https://github.com/cr0hn/vulnerable-node ZVulDrill（china）项目地址: https://github.com/710leo/ZVulDrill VulApps（china）项目地址: https://github.com/Medicean/VulApps]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Docker基础]]></title>
+    <url>%2F2019%2F07%2F12%2Fdocker-ji-chu.html</url>
+    <content type="text"><![CDATA[概述]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[开源镜像汇总]]></title>
     <url>%2F2019%2F07%2F12%2Fkai-yuan-jing-xiang-hui-zong.html</url>
     <content type="text"><![CDATA[概述汇总国内常见开源镜像，提高开发效率。 composer镜像 提供商 地址 阿里云 https://developer.aliyun.com/composer]]></content>
