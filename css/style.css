@@ -560,14 +560,7 @@ a {
 body >header {
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  background: url("../img/banner.png?v1") center #000;
   color: #fff;
-  padding: 1em 0 0.8em;
-}
-@media only screen and (min-width: 1024px) {
-  body >header {
-    padding: 1.8em 0 1.5em;
-  }
 }
 body >header >div {
   margin: 0 auto;
@@ -579,6 +572,7 @@ body >header a {
   color: #fff;
 }
 #textlogo {
+  margin-top: 2rem;
   padding-left: 50px;
   float: left;
   width: 100%;
@@ -717,6 +711,206 @@ header nav ul li a:hover {
 }
 .search label {
   display: none;
+}
+body {
+  margin: 0;
+}
+p {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #333;
+}
+.header {
+  position: relative;
+  text-align: center;
+  background: -webkit-linear-gradient(30deg, #543ab7 0%, #00acc1 100%);
+  background: -moz-linear-gradient(30deg, #543ab7 0%, #00acc1 100%);
+  background: -o-linear-gradient(30deg, #543ab7 0%, #00acc1 100%);
+  background: -ms-linear-gradient(30deg, #543ab7 0%, #00acc1 100%);
+  background: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
+  color: #fff;
+}
+.logo {
+  width: 50px;
+  fill: #fff;
+  padding-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.inner-header {
+  height: 8vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.flex {
+/*Flexbox for containers*/
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+}
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+/*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+.content {
+  position: relative;
+  height: 20vh;
+  text-align: center;
+  background-color: #fff;
+}
+.parallax>use {
+  -webkit-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  -moz-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  -o-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  -ms-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax>use:nth-child(1) {
+  -webkit-animation-delay: -2s;
+  -moz-animation-delay: -2s;
+  -o-animation-delay: -2s;
+  -ms-animation-delay: -2s;
+  animation-delay: -2s;
+  -webkit-animation-duration: 7s;
+  -moz-animation-duration: 7s;
+  -o-animation-duration: 7s;
+  -ms-animation-duration: 7s;
+  animation-duration: 7s;
+}
+.parallax>use:nth-child(2) {
+  -webkit-animation-delay: -3s;
+  -moz-animation-delay: -3s;
+  -o-animation-delay: -3s;
+  -ms-animation-delay: -3s;
+  animation-delay: -3s;
+  -webkit-animation-duration: 10s;
+  -moz-animation-duration: 10s;
+  -o-animation-duration: 10s;
+  -ms-animation-duration: 10s;
+  animation-duration: 10s;
+}
+.parallax>use:nth-child(3) {
+  -webkit-animation-delay: -4s;
+  -moz-animation-delay: -4s;
+  -o-animation-delay: -4s;
+  -ms-animation-delay: -4s;
+  animation-delay: -4s;
+  -webkit-animation-duration: 13s;
+  -moz-animation-duration: 13s;
+  -o-animation-duration: 13s;
+  -ms-animation-duration: 13s;
+  animation-duration: 13s;
+}
+.parallax>use:nth-child(4) {
+  -webkit-animation-delay: -5s;
+  -moz-animation-delay: -5s;
+  -o-animation-delay: -5s;
+  -ms-animation-delay: -5s;
+  animation-delay: -5s;
+  -webkit-animation-duration: 20s;
+  -moz-animation-duration: 20s;
+  -o-animation-duration: 20s;
+  -ms-animation-duration: 20s;
+  animation-duration: 20s;
+}
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+  h1 {
+    font-size: 24px;
+  }
+}
+@-moz-keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+    -moz-transform: translate3d(-90px, 0, 0);
+    -o-transform: translate3d(-90px, 0, 0);
+    -ms-transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+    -moz-transform: translate3d(85px, 0, 0);
+    -o-transform: translate3d(85px, 0, 0);
+    -ms-transform: translate3d(85px, 0, 0);
+    transform: translate3d(85px, 0, 0);
+  }
+}
+@-webkit-keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+    -moz-transform: translate3d(-90px, 0, 0);
+    -o-transform: translate3d(-90px, 0, 0);
+    -ms-transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+    -moz-transform: translate3d(85px, 0, 0);
+    -o-transform: translate3d(85px, 0, 0);
+    -ms-transform: translate3d(85px, 0, 0);
+    transform: translate3d(85px, 0, 0);
+  }
+}
+@-o-keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+    -moz-transform: translate3d(-90px, 0, 0);
+    -o-transform: translate3d(-90px, 0, 0);
+    -ms-transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+    -moz-transform: translate3d(85px, 0, 0);
+    -o-transform: translate3d(85px, 0, 0);
+    -ms-transform: translate3d(85px, 0, 0);
+    transform: translate3d(85px, 0, 0);
+  }
+}
+@keyframes move-forever {
+  0% {
+    -webkit-transform: translate3d(-90px, 0, 0);
+    -moz-transform: translate3d(-90px, 0, 0);
+    -o-transform: translate3d(-90px, 0, 0);
+    -ms-transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(85px, 0, 0);
+    -moz-transform: translate3d(85px, 0, 0);
+    -o-transform: translate3d(85px, 0, 0);
+    -ms-transform: translate3d(85px, 0, 0);
+    transform: translate3d(85px, 0, 0);
+  }
 }
 /* index layout */
 #container {
@@ -2051,7 +2245,7 @@ section.comment {
   transition: color 0.25s;
 }
 #footer {
-  background: #c03;
+  background: #07a2c0;
 }
 .info {
   text-align: center;
