@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.php101.cn/"/>
-  <updated>2019-08-26T07:09:56.000Z</updated>
+  <updated>2019-09-05T01:23:36.000Z</updated>
   <id>http://www.php101.cn/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python:一切皆对象</title>
+    <link href="http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html"/>
+    <id>http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html</id>
+    <published>2019-09-04T07:34:40.000Z</published>
+    <updated>2019-09-05T01:23:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>很多Python书籍和Python教程都会提到<code>Python中一切皆对对象</code>，但是这些教程往往不会深入解释这句话到底什么意思，这篇文章主要讨论下<code>Python中一切皆对象</code>这句话的深层含义。</p><h2 id="Python中一切皆对象"><a href="#Python中一切皆对象" class="headerlink" title="Python中一切皆对象"></a>Python中一切皆对象</h2><p><code>Dive into Python</code>这本书给了这句话一个很好的解释:</p><p><code>不同的编程语言使用不同的方式定义对象。在某些编程语言中，它意味着所有的对象都必须有方法和属性。在另外一些编程语言中，它意味着所有对象必须可子类化(subclassable)。在Python中，这个定义更松散，它并不需要所有的对象都有属性和方法，也不需要所有的对象都可以子类化。但是，在Python中一切皆对象意味着一切皆是对象，它可以被分配给一个变量，亦可以做为函数参数。</code></p><p><code>Python中，一切皆是对象，String是对象，Lists是对象，Functions是对象，甚至于Modules都是对象。</code></p><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>在Python中，所有对象都有如下特点:</p><ul><li>一个唯一的ID (ID是一个整型数字，通过id(x)获得)</li><li>一个类型 (通过 type(x)获得)</li><li>一些内容</li></ul><p>对象的ID不能修改。</p><p>对象的类型不能修改。</p><p>有些对象允许修改其内容（ID和类型永远不能被修改），这类对象称为可变对象(Mutable)。有些对象不允许修改其内容，这类对象称为不可变对象(Immutable)。</p><p>对象类型被一个<code>类型对象(type object)</code>所表示，该类型对象掌握更多该类型对象的信息，如对象占用了多少内存，对象拥有哪些方法。</p><blockquote><p>在CPython 2.2 或者更新的版本中，在<a href="http://article.gmane.org/gmane.comp.python.general/427452" target="_blank" rel="noopener">某些限制不严格的环境</a>中，可以修改对象的类型。</p></blockquote><h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><p>在Python中，对象还可能有如下特点:</p><ul><li>0个或多个方法</li><li>0个或多个名称</li></ul><p>有些对象提供一些允许修改其内容的方法。有些对象仅提供一些允许访问其内容，但不允许修改的方法。有些对象则没有任何方法。</p><p>平时所用到的属性赋值和项引用，仅仅是一种<code>语法糖</code>。</p><h2 id="命名-names"><a href="#命名-names" class="headerlink" title="命名(names)"></a>命名(names)</h2><p>命名是指我们通常所说的变量名。</p><p>这里的命名有一点不同–名称并不是对象的属性，对象本身并不知道自己叫什么名称。</p><p>一个对象可以有许多个命名，也可以没有任何命名。</p><p>名称存在于命名空间中，如模块命名空间、实例命名空间、函数本地命名空间等。</p><p>命名空间是键值对(使用字典实现)的集合。</p><p>当我们调用一个函数时，函数的命名空间随着调用函数时传递的参数被初始化。</p><h2 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h2><p><code>赋值操作改变的是命名空间，并没有修改对象。</code></p><p>如下示例:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = 10</span><br></pre></td></tr></table></figure><p>上述代码意味着将<code>name</code>这个名称添加到本地的命名空间中，同时将这个名称指向一个值为10的整型对象。</p><p>如果某个名称之前已经存在，赋值操作将替换原来的名称指向。 示例如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = 10</span><br><span class="line">name = 20</span><br></pre></td></tr></table></figure><p>上述代码表示，首先将<code>name</code>这个名称添加到本地命名空间中，并将它指向一个值为10的整型对象中。然后，第二次赋值操作，替换了<code>name</code>这个名称的内容，将它指向一个值为20的整型对象中。最初的值为10的整型对象并未被该操作影响。</p><p>相反的，如果执行以下操作:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = []</span><br><span class="line">name.append(1)</span><br></pre></td></tr></table></figure><p>上述代码中，首先将<code>name</code>这个名称添加到了本地命名空间中，并将它指向一个值列表对象中，这个操作修改了<code>命名空间</code>。然后，调用了该对象的一个方法，向自身添加一个整型对象，这个操作修改对象本身的内容，但是它并没有影响到命名空间，也没有影响到添加到自身的整型对象。</p><p>上述代码中，<code>name.attr</code>、<code>name[index]</code>这些可能的操作仅仅是语法糖。如,<code>name.attr</code>对应<code>__setattr__/__getattr__</code>方法,<code>name[index]</code>对应<code>__setitem__/__getitem__</code>方法。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="http://www.effbot.org/zone/python-objects.htm" target="_blank" rel="noopener">Python Objects</a></li><li><a href="http://www.oznetnerd.com/python-everything-object-first-class-citizens/" target="_blank" rel="noopener">http://www.oznetnerd.com/python-everything-object-first-class-citizens/</a></li><li><a href="https://medium.com/@larmalade/python-everything-is-an-object-and-some-objects-are-mutable-4f55eb2b468b" target="_blank" rel="noopener">Python: Everything is an Object, and Some Objects are Mutable</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;很多Python书籍和Python教程都会提到&lt;code&gt;Python中一切皆对对象&lt;/code&gt;，但是这些教程往往不会深入解释这句话到底什
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.php101.cn/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>htop详解</title>
+    <link href="http://www.php101.cn/2019/08/28/htop-xiang-jie.html"/>
+    <id>http://www.php101.cn/2019/08/28/htop-xiang-jie.html</id>
+    <published>2019-08-28T09:15:33.000Z</published>
+    <updated>2019-08-28T09:32:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Linux系统自带的<code>top</code>命令是分析Linux系统运行状况的神器，这篇文章主要介绍<code>htop</code>命令，它可以看做是<code>top</code>命令的曾增强版。</p><h2 id="htop-vs-top"><a href="#htop-vs-top" class="headerlink" title="htop vs top"></a>htop vs top</h2><p>相比<code>top</code>命令，<code>htop</code>有很多自身的优势，如:</p><ul><li>top操作繁琐,htop操作简单</li><li>htop支持图形界面的鼠标操作</li><li>可以横向或纵向滚动浏览进程列表，以便看到所有的进程和完整的命令行</li><li>杀进程时不需要输入进程号等</li></ul><h2 id="htop安装"><a href="#htop安装" class="headerlink" title="htop安装"></a>htop安装</h2><p>不同的Linux发行版下，可以使用的对应的包管理工具安装htop,如centos下可以使用如下命令安装:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install htop</span><br></pre></td></tr></table></figure><h2 id="htop结果详解"><a href="#htop结果详解" class="headerlink" title="htop结果详解"></a>htop结果详解</h2><h3 id="Uptime"><a href="#Uptime" class="headerlink" title="Uptime"></a>Uptime</h3><p>Uptime显示了系统运行时间，可以通过<code>uptime</code>命令查看相同的信息:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ uptime</span><br><span class="line"></span><br><span class="line">17:28:20 up 3 days, 14:09,  1 user,  load average: 0.01, 0.02, 0.05</span><br></pre></td></tr></table></figure><p><code>uptime</code>命令通过读取<code>/proc/uptime</code>文件获取系统运行时间,</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;Linux系统自带的&lt;code&gt;top&lt;/code&gt;命令是分析Linux系统运行状况的神器，这篇文章主要介绍&lt;code&gt;htop&lt;/code
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.php101.cn/categories/Linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Centos7安装PHP 5.6</title>

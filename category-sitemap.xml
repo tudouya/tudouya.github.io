@@ -14,13 +14,6 @@
     </url>
 
     <url>
-        <loc>http://www.php101.cn/categories/python/</loc>
-        <lastmod>2019-07-12T07:28:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.php101.cn/categories/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</loc>
         <lastmod>2019-07-12T07:46:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -36,7 +29,14 @@
 
     <url>
         <loc>http://www.php101.cn/categories/Linux/</loc>
-        <lastmod>2019-08-26T07:09:56.000Z</lastmod>
+        <lastmod>2019-08-28T09:32:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.php101.cn/categories/python/</loc>
+        <lastmod>2019-09-05T01:23:36.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

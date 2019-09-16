@@ -4,19 +4,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
   
-    <title>ES6实战 | PHP101</title>
+    <title>Python:一切皆对象 | PHP101</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tudouya">
     
-    <meta name="description" content="概述ES6风风风火火的出来很长时间了，从最初的babel插件支持，到vue或者react框架，再到浏览器原生支持。ES6中定义了很多方便实用的特性，但是一直没怎么深入了解，从今天起开始陆续深入平时写代码的过程中，遇到的ES6各种特性。
-扩展运算符(spread operator)…使用扩展运算符可以">
+    <meta name="description" content="概述很多Python书籍和Python教程都会提到Python中一切皆对对象，但是这些教程往往不会深入解释这句话到底什么意思，这篇文章主要讨论下Python中一切皆对象这句话的深层含义。
+Python中一切皆对象Dive into Python这本书给了这句话一个很好的解释:
+不同的编程语言使用不同">
     
     
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="tudouyavip">
-    <meta name="twitter:title" content="ES6实战 | PHP101">
+    <meta name="twitter:title" content="Python:一切皆对象 | PHP101">
       
     
     
@@ -94,13 +95,13 @@
       <div id="main" class="post" itemscope itemprop="blogPost">
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
-    <time datetime="2019-03-24T04:13:32.000Z" itemprop="datePublished">
-      <a href="/2019/03/24/es6-shi-zhan.html" title="ES6实战" itemprop="url" class="article-time">2019-03-24</a>
+    <time datetime="2019-09-04T07:34:40.000Z" itemprop="datePublished">
+      <a href="/2019/09/04/python-yi-qie-jie-dui-xiang.html" title="Python:一切皆对象" itemprop="url" class="article-time">2019-09-04</a>
     </time>
 
   <h1 itemprop="name" class="article-name">
     
-      <a href="/2019/03/24/es6-shi-zhan.html" title="ES6实战" itemprop="url"><span>ES6实战</span></a>
+      <a href="/2019/09/04/python-yi-qie-jie-dui-xiang.html" title="Python:一切皆对象" itemprop="url"><span>Python:一切皆对象</span></a>
   </h1>
 </header>
 
@@ -110,26 +111,64 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展运算符-spread-operator-…"><span class="toc-number">2.</span> <span class="toc-text">扩展运算符(spread operator)…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新数组"><span class="toc-number">2.1.</span> <span class="toc-text">创建新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并数组"><span class="toc-number">2.2.</span> <span class="toc-text">合并数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新数组-1"><span class="toc-number">2.3.</span> <span class="toc-text">创建新数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新对象"><span class="toc-number">2.4.</span> <span class="toc-text">创建新对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#展开字符串"><span class="toc-number">2.5.</span> <span class="toc-text">展开字符串</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python中一切皆对象"><span class="toc-number">2.</span> <span class="toc-text">Python中一切皆对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">3.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象扩展"><span class="toc-number">4.</span> <span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名-names"><span class="toc-number">5.</span> <span class="toc-text">命名(names)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#赋值"><span class="toc-number">6.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>ES6风风风火火的出来很长时间了，从最初的babel插件支持，到vue或者react框架，再到浏览器原生支持。ES6中定义了很多方便实用的特性，但是一直没怎么深入了解，从今天起开始陆续深入平时写代码的过程中，遇到的ES6各种特性。</p>
-<h2 id="扩展运算符-spread-operator-…"><a href="#扩展运算符-spread-operator-…" class="headerlink" title="扩展运算符(spread operator)…"></a>扩展运算符(spread operator)…</h2><p>使用扩展运算符可以展开数组，对象和字符串。</p>
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>很多Python书籍和Python教程都会提到<code>Python中一切皆对对象</code>，但是这些教程往往不会深入解释这句话到底什么意思，这篇文章主要讨论下<code>Python中一切皆对象</code>这句话的深层含义。</p>
+<h2 id="Python中一切皆对象"><a href="#Python中一切皆对象" class="headerlink" title="Python中一切皆对象"></a>Python中一切皆对象</h2><p><code>Dive into Python</code>这本书给了这句话一个很好的解释:</p>
+<p><code>不同的编程语言使用不同的方式定义对象。在某些编程语言中，它意味着所有的对象都必须有方法和属性。在另外一些编程语言中，它意味着所有对象必须可子类化(subclassable)。在Python中，这个定义更松散，它并不需要所有的对象都有属性和方法，也不需要所有的对象都可以子类化。但是，在Python中一切皆对象意味着一切皆是对象，它可以被分配给一个变量，亦可以做为函数参数。</code></p>
+<p><code>Python中，一切皆是对象，String是对象，Lists是对象，Functions是对象，甚至于Modules都是对象。</code></p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>在Python中，所有对象都有如下特点:</p>
+<ul>
+<li>一个唯一的ID (ID是一个整型数字，通过id(x)获得)</li>
+<li>一个类型 (通过 type(x)获得)</li>
+<li>一些内容</li>
+</ul>
+<p>对象的ID不能修改。</p>
+<p>对象的类型不能修改。</p>
+<p>有些对象允许修改其内容（ID和类型永远不能被修改），这类对象称为可变对象(Mutable)。有些对象不允许修改其内容，这类对象称为不可变对象(Immutable)。</p>
+<p>对象类型被一个<code>类型对象(type object)</code>所表示，该类型对象掌握更多该类型对象的信息，如对象占用了多少内存，对象拥有哪些方法。</p>
 <blockquote>
-<p>扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
+<p>在CPython 2.2 或者更新的版本中，在<a href="http://article.gmane.org/gmane.comp.python.general/427452" target="_blank" rel="noopener">某些限制不严格的环境</a>中，可以修改对象的类型。</p>
 </blockquote>
-<h3 id="创建新数组"><a href="#创建新数组" class="headerlink" title="创建新数组"></a>创建新数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = [1, 2, 3]</span><br><span class="line">const b = [...a, 4, 5, 6] // Array(6) [ 1, 2, 3, 4, 5, 6 ]</span><br></pre></td></tr></table></figure>
-<h3 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// ES5中concat()方法</span><br><span class="line">const arr1 = [&quot;a&quot;, &quot;b&quot;]</span><br><span class="line">const arr2 = [&quot;c&quot;]</span><br><span class="line">const arr3 = [&quot;d&quot;, &quot;e&quot;]</span><br><span class="line">const arrAll = arr1.concat(arr2, arr3) // Array(5) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span><br><span class="line"></span><br><span class="line">// 扩展云算法</span><br><span class="line">const arrAll = [...arr1, ...arr2, ...arr3] // Array(5) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ]</span><br></pre></td></tr></table></figure>
-<h3 id="创建新数组-1"><a href="#创建新数组-1" class="headerlink" title="创建新数组"></a>创建新数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [&quot;a&quot;, &quot;b&quot;]</span><br><span class="line">const arr2 = [&quot;c&quot;]</span><br><span class="line">const arr3 = [&quot;d&quot;, &quot;e&quot;]</span><br><span class="line">const arr4 = [...arr1, ...arr2, ...arr3, &quot;f&quot;, &quot;g&quot;] // Array(7) [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot; ]</span><br></pre></td></tr></table></figure>
-<h3 id="创建新对象"><a href="#创建新对象" class="headerlink" title="创建新对象"></a>创建新对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const oldPerson = &#123;</span><br><span class="line">  user: &quot;tudouya&quot;,</span><br><span class="line">  password: &quot;123456&quot;</span><br><span class="line">&#125;</span><br><span class="line">const newPerson = &#123; ...oldPerson &#125; // Object &#123; user: &quot;tudouya&quot;, password: &quot;123456&quot; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="展开字符串"><a href="#展开字符串" class="headerlink" title="展开字符串"></a>展开字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str = &quot;hello&quot;</span><br><span class="line">const arr = [...str] // Array(5) [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</span><br></pre></td></tr></table></figure>  
+<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><p>在Python中，对象还可能有如下特点:</p>
+<ul>
+<li>0个或多个方法</li>
+<li>0个或多个名称</li>
+</ul>
+<p>有些对象提供一些允许修改其内容的方法。有些对象仅提供一些允许访问其内容，但不允许修改的方法。有些对象则没有任何方法。</p>
+<p>平时所用到的属性赋值和项引用，仅仅是一种<code>语法糖</code>。</p>
+<h2 id="命名-names"><a href="#命名-names" class="headerlink" title="命名(names)"></a>命名(names)</h2><p>命名是指我们通常所说的变量名。</p>
+<p>这里的命名有一点不同–名称并不是对象的属性，对象本身并不知道自己叫什么名称。</p>
+<p>一个对象可以有许多个命名，也可以没有任何命名。</p>
+<p>名称存在于命名空间中，如模块命名空间、实例命名空间、函数本地命名空间等。</p>
+<p>命名空间是键值对(使用字典实现)的集合。</p>
+<p>当我们调用一个函数时，函数的命名空间随着调用函数时传递的参数被初始化。</p>
+<h2 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h2><p><code>赋值操作改变的是命名空间，并没有修改对象。</code></p>
+<p>如下示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = 10</span><br></pre></td></tr></table></figure>
+<p>上述代码意味着将<code>name</code>这个名称添加到本地的命名空间中，同时将这个名称指向一个值为10的整型对象。</p>
+<p>如果某个名称之前已经存在，赋值操作将替换原来的名称指向。 示例如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = 10</span><br><span class="line">name = 20</span><br></pre></td></tr></table></figure>
+<p>上述代码表示，首先将<code>name</code>这个名称添加到本地命名空间中，并将它指向一个值为10的整型对象中。然后，第二次赋值操作，替换了<code>name</code>这个名称的内容，将它指向一个值为20的整型对象中。最初的值为10的整型对象并未被该操作影响。</p>
+<p>相反的，如果执行以下操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = []</span><br><span class="line">name.append(1)</span><br></pre></td></tr></table></figure>
+<p>上述代码中，首先将<code>name</code>这个名称添加到了本地命名空间中，并将它指向一个值列表对象中，这个操作修改了<code>命名空间</code>。然后，调用了该对象的一个方法，向自身添加一个整型对象，这个操作修改对象本身的内容，但是它并没有影响到命名空间，也没有影响到添加到自身的整型对象。</p>
+<p>上述代码中，<code>name.attr</code>、<code>name[index]</code>这些可能的操作仅仅是语法糖。如,<code>name.attr</code>对应<code>__setattr__/__getattr__</code>方法,<code>name[index]</code>对应<code>__setitem__/__getitem__</code>方法。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.effbot.org/zone/python-objects.htm" target="_blank" rel="noopener">Python Objects
+</a></li>
+<li><a href="http://www.oznetnerd.com/python-everything-object-first-class-citizens/" target="_blank" rel="noopener">http://www.oznetnerd.com/python-everything-object-first-class-citizens/</a></li>
+<li><a href="https://medium.com/@larmalade/python-everything-is-an-object-and-some-objects-are-mutable-4f55eb2b468b" target="_blank" rel="noopener">Python: Everything is an Object, and Some Objects are Mutable</a></li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  <a class="article-category-link" href="/categories/python/">python</a>
 </div>
 
 
@@ -138,7 +177,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://www.php101.cn/2019/03/24/es6-shi-zhan.html" data-title="ES6实战 | PHP101" data-tsina class="share clearfix">
+  <div data-url="http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html" data-title="Python:一切皆对象 | PHP101" data-tsina class="share clearfix">
   </div>
 
 </div>
@@ -147,19 +186,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2019/05/10/python-mian-xiang-dui-xiang-zong-jie.html" title="Python面向对象总结">
-  <strong>上一篇：</strong><br>
-  <span>
-  Python面向对象总结</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2019/02/25/javascript-chuang-jian-dui-xiang-fang-shi-zong-jie.html" title="Javascript创建对象方式总结">
+<a href="/2019/08/28/htop-xiang-jie.html" title="htop详解">
  <strong>下一篇：</strong><br> 
- <span>Javascript创建对象方式总结
+ <span>htop详解
 </span>
 </a>
 </div>

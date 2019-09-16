@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html</loc>
+        <lastmod>2019-09-05T01:23:36.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.php101.cn/2019/08/28/htop-xiang-jie.html</loc>
+        <lastmod>2019-08-28T09:32:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.php101.cn/2019/08/26/centos7-an-zhuang-php-5-6.html</loc>
         <lastmod>2019-08-26T07:09:56.000Z</lastmod>
         <changefreq>weekly</changefreq>
