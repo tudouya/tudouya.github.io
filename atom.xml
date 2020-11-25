@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.php101.cn/"/>
-  <updated>2019-09-05T01:23:36.000Z</updated>
+  <updated>2020-02-05T14:00:46.000Z</updated>
   <id>http://www.php101.cn/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vant-weapp知识点总结</title>
+    <link href="http://www.php101.cn/2020/02/05/vant-weapp-zhi-shi-dian-zong-jie.html"/>
+    <id>http://www.php101.cn/2020/02/05/vant-weapp-zhi-shi-dian-zong-jie.html</id>
+    <published>2020-02-05T13:28:52.000Z</published>
+    <updated>2020-02-05T14:00:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>微信小程序有许多组件库，经过一系列的调研，最终还是决定采用vant-weapp，但是不可避免的遇到了很多坑，把这些坑记录下来，方便以后使用。</p><h2 id="表单数据双向绑定"><a href="#表单数据双向绑定" class="headerlink" title="表单数据双向绑定"></a>表单数据双向绑定</h2><p>在使用vant-weapp的表单组件时，一直获取不到输入的表单数据，究其原因是因为表单组件输入的值并非是双向绑定的。如果要获取表单中输入的值，需要在表单中绑定事件，并在事件中获取输入的值。使用方法:</p><p>wxml文件:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-field placeholder-style=&quot;font-size: 32rpx;&quot; left-icon=&quot;/static/images/icon-mobile.png&quot; value=&quot;&#123;&#123;mobile&#125;&#125;&quot; placeholder=&quot;请输入手机号&quot; bind:input=&quot;onMobileInput&quot; /&gt;</span><br></pre></td></tr></table></figure><p>js文件:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 页面的初始数据</span><br><span class="line">   */</span><br><span class="line">  data: &#123;</span><br><span class="line">    mobile: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 获取输入手机号</span><br><span class="line">   */</span><br><span class="line">  onMobileInput: function (event) &#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      mobile: event.detail</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="toast组件使用"><a href="#toast组件使用" class="headerlink" title="toast组件使用"></a>toast组件使用</h2><ol><li>引入<br>在js文件中引入Toast函数</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Toast from &apos;../../miniprogram_npm/@vant/weapp/toast/toast&apos;</span><br></pre></td></tr></table></figure><p>注意导入的文件路径及导入的文件，导入的文件为toast组件中的toast.js并非index.js</p><ol><li>使用占位符<br>在wxml文件中，使用占位符</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-toast id=&quot;van-toast&quot; /&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;微信小程序有许多组件库，经过一系列的调研，最终还是决定采用vant-weapp，但是不可避免的遇到了很多坑，把这些坑记录下来，方便以后使用。
+      
+    
+    </summary>
+    
+      <category term="微信小程序" scheme="http://www.php101.cn/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.php101.cn/2019/09/23/xiang-mu-di-zhi.html"/>
+    <id>http://www.php101.cn/2019/09/23/xiang-mu-di-zhi.html</id>
+    <published>2019-09-23T08:49:39.000Z</published>
+    <updated>2019-09-23T09:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><h3 id="Skywalking"><a href="#Skywalking" class="headerlink" title="Skywalking"></a>Skywalking</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.216:8080</span><br></pre></td></tr></table></figure><h3 id="DubboMonitor"><a href="#DubboMonitor" class="headerlink" title="DubboMonitor"></a>DubboMonitor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.132:8080</span><br><span class="line"></span><br><span class="line">用户名: admin</span><br><span class="line">密码: admin</span><br></pre></td></tr></table></figure><h3 id="系统前台"><a href="#系统前台" class="headerlink" title="系统前台"></a>系统前台</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.154:8081/webx/systemindex/passwordloginpagebr.do</span><br><span class="line"></span><br><span class="line">用户名: 18707044924</span><br><span class="line">密码: cmbc@111111</span><br></pre></td></tr></table></figure><h3 id="系统后台"><a href="#系统后台" class="headerlink" title="系统后台"></a>系统后台</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.154:8082/adminsys/systemindex/passwordloginpage.do</span><br><span class="line"></span><br><span class="line">用户名: 15268194425</span><br><span class="line">密码:  111111</span><br></pre></td></tr></table></figure><blockquote><p>后台系统现有数据不能修改和删除</p></blockquote><h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><p>本项目测试需先登录堡垒机，堡垒机相关信息如下</p><h3 id="堡垒机地址"><a href="#堡垒机地址" class="headerlink" title="堡垒机地址"></a>堡垒机地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://audit.mstech.com.cn/</span><br></pre></td></tr></table></figure><h3 id="堡垒机用户名"><a href="#堡垒机用户名" class="headerlink" title="堡垒机用户名"></a>堡垒机用户名</h3><p>三个测试人员对应三个测试账号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: chenfengwei</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: liyiwei</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: cuixiahui</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><blockquote><p>堡垒机登录需按照提示下载谷歌身份验证器</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;项目地址&quot;&gt;&lt;a href=&quot;#项目地址&quot; class=&quot;headerlink&quot; title=&quot;项目地址&quot;&gt;&lt;/a&gt;项目地址&lt;/h2&gt;&lt;h3 id=&quot;Skywalking&quot;&gt;&lt;a href=&quot;#Skywalking&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Python:一切皆对象</title>
