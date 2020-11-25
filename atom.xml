@@ -40,27 +40,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://www.php101.cn/2019/09/23/xiang-mu-di-zhi.html"/>
-    <id>http://www.php101.cn/2019/09/23/xiang-mu-di-zhi.html</id>
-    <published>2019-09-23T08:49:39.000Z</published>
-    <updated>2019-09-23T09:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><h3 id="Skywalking"><a href="#Skywalking" class="headerlink" title="Skywalking"></a>Skywalking</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.216:8080</span><br></pre></td></tr></table></figure><h3 id="DubboMonitor"><a href="#DubboMonitor" class="headerlink" title="DubboMonitor"></a>DubboMonitor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.132:8080</span><br><span class="line"></span><br><span class="line">用户名: admin</span><br><span class="line">密码: admin</span><br></pre></td></tr></table></figure><h3 id="系统前台"><a href="#系统前台" class="headerlink" title="系统前台"></a>系统前台</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.154:8081/webx/systemindex/passwordloginpagebr.do</span><br><span class="line"></span><br><span class="line">用户名: 18707044924</span><br><span class="line">密码: cmbc@111111</span><br></pre></td></tr></table></figure><h3 id="系统后台"><a href="#系统后台" class="headerlink" title="系统后台"></a>系统后台</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.25.154:8082/adminsys/systemindex/passwordloginpage.do</span><br><span class="line"></span><br><span class="line">用户名: 15268194425</span><br><span class="line">密码:  111111</span><br></pre></td></tr></table></figure><blockquote><p>后台系统现有数据不能修改和删除</p></blockquote><h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><p>本项目测试需先登录堡垒机，堡垒机相关信息如下</p><h3 id="堡垒机地址"><a href="#堡垒机地址" class="headerlink" title="堡垒机地址"></a>堡垒机地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://audit.mstech.com.cn/</span><br></pre></td></tr></table></figure><h3 id="堡垒机用户名"><a href="#堡垒机用户名" class="headerlink" title="堡垒机用户名"></a>堡垒机用户名</h3><p>三个测试人员对应三个测试账号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: chenfengwei</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: liyiwei</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名: cuixiahui</span><br><span class="line">密码: Cmbc@1234</span><br></pre></td></tr></table></figure><blockquote><p>堡垒机登录需按照提示下载谷歌身份验证器</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;项目地址&quot;&gt;&lt;a href=&quot;#项目地址&quot; class=&quot;headerlink&quot; title=&quot;项目地址&quot;&gt;&lt;/a&gt;项目地址&lt;/h2&gt;&lt;h3 id=&quot;Skywalking&quot;&gt;&lt;a href=&quot;#Skywalking&quot; class=&quot;headerlink&quot; titl
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Python:一切皆对象</title>
     <link href="http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html"/>
     <id>http://www.php101.cn/2019/09/04/python-yi-qie-jie-dui-xiang.html</id>
