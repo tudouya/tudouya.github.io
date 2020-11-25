@@ -1,0 +1,417 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  
+    <title>漏洞及渗透练习平台汇总 | PHP101</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="tudouya">
+    
+    <meta name="description" content="概述很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。
+漏洞环境(靶机)hackthebox（HTB）项目地址: htt">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="tudouyavip">
+    <meta name="twitter:title" content="漏洞及渗透练习平台汇总 | PHP101">
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="PHP101" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//cdn.bootcss.com/highlight.js/9.1.0/styles/railscasts.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+      figure {
+        overflow-x: auto;
+      }
+    </style>
+</head>
+</html>
+  <body>
+    <header>
+      <div class="header">
+	<div id="textlogo">
+		<h1 class="site-name"><a href="/" title="PHP101">PHP101</a></h1>
+		<h2 class="blog-motto">~if you fail to plan，you plan to fail~</h2>
+	</div>
+	<div class="navbar">
+		<a class="navbutton navmobile" href="#" title="菜单">
+		</a>
+	</div>
+	<nav class="animated">
+		<ul>
+			<ul>
+				
+				<li><a href="/">主页</a></li>
+				
+				<li><a href="/archives">归档</a></li>
+				
+				<li><a href="/about">关于我</a></li>
+				
+				<li><a href="/sitemap.xml">站点地图</a></li>
+				
+				<li><a href="javascript:void(0)" id="local-search-btn">搜索</a></li>
+			</ul>
+	</ul></nav>
+	<div class="popup">
+		<span class="search-icon fa fa-search"></span>
+		<input type="text" id="local-search-input">
+		<div id="local-search-result"></div>
+		<span class="popup-btn-close">close</span>
+	</div>
+	<div class="popoverlay"></div>
+	<div class="inner-header flex">
+		<!--Just the logo.. Don't mind this-->
+	</div>
+	<div>
+		<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 24 150 28" preserveaspectratio="none" shape-rendering="auto">
+			<defs>
+				<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+				</path>
+			</defs>
+			<g class="parallax">
+				<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7"/>
+				<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)"/>
+				<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)"/>
+				<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"/>
+			</g>
+		</svg>
+	</div>
+</div>
+    </header>
+    <div id="wrap">
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+    <time datetime="2019-08-23T06:46:24.000Z" itemprop="datePublished">
+      <a href="/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" title="漏洞及渗透练习平台汇总" itemprop="url" class="article-time">2019-08-23</a>
+    </time>
+
+  <h1 itemprop="name" class="article-name">
+    
+      <a href="/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" title="漏洞及渗透练习平台汇总" itemprop="url"><span>漏洞及渗透练习平台汇总</span></a>
+  </h1>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞环境-靶机"><span class="toc-number">2.</span> <span class="toc-text">漏洞环境(靶机)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hackthebox（HTB）"><span class="toc-number">2.1.</span> <span class="toc-text">hackthebox（HTB）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebGoat"><span class="toc-number">2.2.</span> <span class="toc-text">WebGoat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebGoat-Legacy"><span class="toc-number">2.3.</span> <span class="toc-text">WebGoat-Legacy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DVWA"><span class="toc-number">2.4.</span> <span class="toc-text">DVWA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqli-labs"><span class="toc-number">2.5.</span> <span class="toc-text">sqli-labs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vulnhub"><span class="toc-number">2.6.</span> <span class="toc-text">vulnhub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pentesterlab"><span class="toc-number">2.7.</span> <span class="toc-text">pentesterlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vulnerable-node"><span class="toc-number">2.8.</span> <span class="toc-text">vulnerable-node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZVulDrill（china）"><span class="toc-number">2.9.</span> <span class="toc-text">ZVulDrill（china）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VulApps（china）"><span class="toc-number">2.10.</span> <span class="toc-text">VulApps（china）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SEED-labs（美国雪城大学）"><span class="toc-number">2.11.</span> <span class="toc-text">SEED labs（美国雪城大学）</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>很多时候，做安全工具也好，给朋友演示一些安全漏洞原理也好，都需要一些演示环境。特别是现在安全法律法规越来越严格，不能进行未授权的渗透测试，所以更需要自己搭建一些漏洞环境来进行技术研究，本文主要搜集一些开源的漏洞环境，方便以后使用。</p>
+<h2 id="漏洞环境-靶机"><a href="#漏洞环境-靶机" class="headerlink" title="漏洞环境(靶机)"></a>漏洞环境(靶机)</h2><h3 id="hackthebox（HTB）"><a href="#hackthebox（HTB）" class="headerlink" title="hackthebox（HTB）"></a>hackthebox（HTB）</h3><p>项目地址: <a href="https://www.hackthebox.eu/" target="_blank" rel="noopener">https://www.hackthebox.eu/</a></p>
+<h3 id="WebGoat"><a href="#WebGoat" class="headerlink" title="WebGoat"></a>WebGoat</h3><p>项目地址: <a href="https://webgoat.github.io/WebGoat/" target="_blank" rel="noopener">https://webgoat.github.io/WebGoat/</a></p>
+<h3 id="WebGoat-Legacy"><a href="#WebGoat-Legacy" class="headerlink" title="WebGoat-Legacy"></a>WebGoat-Legacy</h3><p>项目地址: <a href="https://github.com/WebGoat/WebGoat-Legacy" target="_blank" rel="noopener">https://github.com/WebGoat/WebGoat-Legacy</a></p>
+<h3 id="DVWA"><a href="#DVWA" class="headerlink" title="DVWA"></a>DVWA</h3><p>项目地址: <a href="https://github.com/RandomStorm/DVWA" target="_blank" rel="noopener">https://github.com/RandomStorm/DVWA</a></p>
+<h3 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h3><p>项目地址: <a href="https://github.com/Audi-1/sqli-labs" target="_blank" rel="noopener">https://github.com/Audi-1/sqli-labs</a></p>
+<h3 id="vulnhub"><a href="#vulnhub" class="headerlink" title="vulnhub"></a>vulnhub</h3><p>项目地址: <a href="https://www.vulnhub.com/" target="_blank" rel="noopener">https://www.vulnhub.com/</a></p>
+<h3 id="pentesterlab"><a href="#pentesterlab" class="headerlink" title="pentesterlab"></a>pentesterlab</h3><p>项目地址: <a href="https://pentesterlab.com/" target="_blank" rel="noopener">https://pentesterlab.com/</a></p>
+<h3 id="vulnerable-node"><a href="#vulnerable-node" class="headerlink" title="vulnerable-node"></a>vulnerable-node</h3><p>项目地址: <a href="https://github.com/cr0hn/vulnerable-node" target="_blank" rel="noopener">https://github.com/cr0hn/vulnerable-node</a></p>
+<h3 id="ZVulDrill（china）"><a href="#ZVulDrill（china）" class="headerlink" title="ZVulDrill（china）"></a>ZVulDrill（china）</h3><p>项目地址: <a href="https://github.com/710leo/ZVulDrill" target="_blank" rel="noopener">https://github.com/710leo/ZVulDrill</a></p>
+<h3 id="VulApps（china）"><a href="#VulApps（china）" class="headerlink" title="VulApps（china）"></a>VulApps（china）</h3><p>项目地址: <a href="https://github.com/Medicean/VulApps" target="_blank" rel="noopener">https://github.com/Medicean/VulApps</a></p>
+<h3 id="SEED-labs（美国雪城大学）"><a href="#SEED-labs（美国雪城大学）" class="headerlink" title="SEED labs（美国雪城大学）"></a>SEED labs（美国雪城大学）</h3><p>项目地址: <a href="https://seedsecuritylabs.org/index.html" target="_blank" rel="noopener">https://seedsecuritylabs.org</a>  </p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Web安全/">Web安全</a>
+</div>
+
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.php101.cn/2019/08/23/lou-dong-ji-shen-tou-lian-xi-ping-tai-hui-zong.html" data-title="漏洞及渗透练习平台汇总 | PHP101" data-tsina class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/05/13/python-lei-fang-fa-zhuang-shi-qi.html" title="Python类方法装饰器">
+ <strong>下一篇：</strong><br> 
+ <span>Python类方法装饰器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Web安全/" title="Web安全">Web安全<sup>1</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://program-think.blogspot.com/" target="_blank" title="编程随想">编程随想</a></li>
+      <li><a href="http://yanhaijing.com/" target="_blank" title="颜海镜">颜海镜</a></li>
+      <li><a href="http://dog.wtf/">雪泥鸿爪</a></li>
+      <li><a href="http://homeway.me/" target="_blank" title="夏日小草">夏日小草</a></li><br>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+<div>
+<br>
+<a href="http://www.php-fig.org/psr/" target="_blank">
+    <img style="width:100%;height:auto;" src="http://italoqueiroz.github.io/images/php-fig/phpfig.png" alt="PHP: PHP-FIG">
+</a></div>
+<a href="http://www.phptherightway.com" target="_blank">
+    <img style="width:100%;height:auto;" src="http://www.phptherightway.com/images/banners/vert-rect-240x400.png" alt="PHP: The Right Way">
+</a>
+</div>
+
+    </div>
+</div>
+    <footer><div id="footer">
+	
+    <div class="social-font">
+        
+        <a href="http://weibo.com/5050395856" target="_blank" class="icon-weibo" title="weibo"></a>
+        
+        
+        <a href="https://github.com/tudouya" target="_blank" class="icon-github" title="github"></a>
+        
+        
+        
+        <a href="https://twitter.com/tudouyavip" target="_blank" class="icon-twitter" title="twitter"></a>
+        
+        
+        
+        
+        <a href="mailto:chenfwvip@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+        
+    </div>
+	<section class="info">
+		<p class="l1">
+            Success in this matter, is our boss!
+        </p>
+            <!-- <br/> -->
+        <p class="l2">
+			Action is the only road to knowledge
+        </p>
+	</section>
+	 
+		<p class="copyright">Powered by <a href="https://hexo.io/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/RagingCat/hexo-theme-ragingcat" target="_blank" title="hexo-theme-ragingcat">Raging Cat</a> © 2020
+		
+		<a href="http://www.php101.cn/about" target="_blank" title="tudouya">tudouya</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+
+    $('.navbar').click(function(){
+      $('header nav').toggleClass('shownav');
+    });
+    var myWidth = 0;
+    function getSize(){
+      if( typeof( window.innerWidth ) == 'number' ) {
+        myWidth = window.innerWidth;
+      } else if( document.documentElement && document.documentElement.clientWidth) {
+        myWidth = document.documentElement.clientWidth;
+      };
+    };
+    var m = $('#main'),
+        a = $('#asidepart'),
+        c = $('.closeaside'),
+        o = $('.openaside');
+    $(window).resize(function(){
+      getSize();
+      if (myWidth >= 1024) {
+        $('header nav').removeClass('shownav');
+      }else
+      {
+        m.removeClass('moveMain');
+        a.css('display', 'block').removeClass('fadeOut');
+        o.css('display', 'none');
+        
+      }
+    });
+    c.click(function(){
+      a.addClass('fadeOut').css('display', 'none');
+      o.css('display', 'block').addClass('fadeIn');
+      m.addClass('moveMain');
+    });
+    o.click(function(){
+      o.css('display', 'none').removeClass('beforeFadeIn');
+      a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');
+      m.removeClass('moveMain');
+    });
+    $(window).scroll(function(){
+      o.css("top",Math.max(80,260-$(this).scrollTop()));
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var ai = $(".article-content>iframe"),
+      ae = $(".article-content>embed"),
+      t = $("#toc"),
+      h = $("article h2")
+    ;(ah = $("article h2")),
+      (ta = $("#toc.toc-aside")),
+      (o = $(".openaside")),
+      (c = $(".closeaside"))
+    if (ai.length > 0) {
+      ai.wrap('<div class="video-container" />')
+    }
+    if (ae.length > 0) {
+      ae.wrap('<div class="video-container" />')
+    }
+    if (ah.length == 0) {
+      t.css("display", "none")
+    } else {
+      c.click(function() {
+        ta.css("display", "block").addClass("fadeIn")
+      })
+      o.click(function() {
+        ta.css("display", "none")
+      })
+      $(window).scroll(function() {
+        ta.css("top", Math.max(140, 320 - $(this).scrollTop()))
+      })
+    }
+  })
+</script>
+ 
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $this = $(".share"),
+      url = $this.attr("data-url"),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr("data-title"),
+      tsina = $this.attr("data-tsina")
+    var html = [
+      '<a href="#" class="overlay" id="qrcode"></a>',
+      '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' +
+        encodedUrl +
+        '"/></div>',
+      '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+      '<a href="https://www.facebook.com/sharer.php?u=' +
+        encodedUrl +
+        '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+      '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+      '<a href="https://twitter.com/intent/tweet?url=' +
+        encodedUrl +
+        '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+      '<a href="http://service.weibo.com/share/share.php?title=' +
+        title +
+        "&url=" +
+        encodedUrl +
+        "&ralateUid=" +
+        tsina +
+        "&searchPic=true&style=number" +
+        '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+      '<span title="Share to"></span>'
+    ].join("")
+    $this.append(html)
+    $(".article-share-qrcode").click(function() {
+      var imgSrc = $("#qrcode-pic").attr("data-src")
+      $("#qrcode-pic").attr("src", imgSrc)
+      $("#qrcode-pic").load(function() {
+        $(".qrcode strong").text(" ")
+      })
+    })
+  })
+</script>
+   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<style type="text/css"></style>
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("pre").each(function(i, block) {
+      hljs.highlightBlock(block)
+    })
+    $(".article-content").each(function(i) {
+      $(this)
+        .find("img")
+        .each(function() {
+          if (
+            $(this)
+              .parent()
+              .hasClass("fancybox")
+          )
+            return
+          var alt = this.alt
+          if (alt) $(this).after('<span class="caption">' + alt + "</span>")
+          $(this).wrap(
+            '<a href="' +
+              this.src +
+              '" title="' +
+              alt +
+              '" class="fancybox"></a>'
+          )
+        })
+      $(this)
+        .find(".fancybox")
+        .each(function() {
+          $(this).attr("rel", "article" + i)
+        })
+    })
+    if ($.fancybox) {
+      $(".fancybox").fancybox()
+    }
+  })
+</script>
+   
+
+  </body>
+</html>
